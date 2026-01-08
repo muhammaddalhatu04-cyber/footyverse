@@ -1,287 +1,111 @@
-/* ================= MENU ================= */
-const menuToggle = document.getElementById("menuToggle");
-const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
-const overlay = document.getElementById("overlay");
-
-// Open menu
-menuToggle.onclick = () => {
-  sideMenu.classList.add("active");
-  overlay.classList.add("active");
-};
-
-// Close menu
-function closeAll() {
-  sideMenu.classList.remove("active");
-  overlay.classList.remove("active");
-  document.querySelectorAll(".submenu-parent").forEach(p =>
-    p.classList.remove("open")
-  );
-}
-
-closeMenu.onclick = closeAll;
-overlay.onclick = closeAll;
-
-// Submenu toggle
-document.querySelectorAll(".submenu-parent").forEach(parent => {
-  parent.onclick = () => parent.classList.toggle("open");
-});
-
-// Menu item clicks
-document.querySelectorAll(".nav-item").forEach(item => {
-  item.onclick = () => {
-    const page = item.dataset.page;
-    if (page && page !== "index") {
-      window.location.href = `${page}.html`;
-    }
-  };
-});
-
-// Submenu item clicks (leagues under Match Updates)
-document.querySelectorAll(".submenu-item").forEach(item => {
-  item.onclick = () => {
-    window.location.href = `${item.dataset.page}.html`;
-  };
-});
-
-/* ================= HOME NEWS (25 REAL ONES) ================= */
-const homeNews = [
-  {
-    id: 1,
-    title: "Real Madrid edge Bayern Munich in dramatic Champions League semi-final",
-    image: "images/news1.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Real Madrid secured a dramatic late victory over Bayern Munich to book their place in the Champions League final after a tense night at the Bernabéu."
-  },
-  {
-    id: 2,
-    title: "Manchester City extend winning run with dominant display at Etihad",
-    image: "images/news2.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Pep Guardiola’s side delivered a ruthless performance as City tightened their grip on the Premier League title race."
-  },
-  {
-    id: 3,
-    title: "Arsenal suffer costly defeat in race for top four",
-    image: "images/news3.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Arsenal’s hopes of securing Champions League football took a hit after a narrow loss away from home."
-  },
-  {
-    id: 4,
-    title: "Barcelona youngster shines in crucial La Liga victory",
-    image: "images/news4.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "A teenage sensation stole the spotlight as Barcelona claimed three vital points in the title race."
-  },
-  {
-    id: 5,
-    title: "Liverpool survive late scare to keep title hopes alive",
-    image: "images/news5.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Liverpool held their nerve in stoppage time to secure a crucial win at Anfield."
-  },
-  {
-    id: 6,
-    title: "PSG crowned Ligue 1 champions with games to spare",
-    image: "images/news6.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Paris Saint-Germain wrapped up another league title following a comfortable home victory."
-  },
-  {
-    id: 7,
-    title: "Inter Milan strengthen grip on Serie A summit",
-    image: "images/news7.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Inter continued their impressive form with a commanding win that keeps them clear at the top."
-  },
-  {
-    id: 8,
-    title: "Borussia Dortmund boost Champions League hopes",
-    image: "images/news8.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Dortmund claimed a vital three points in a tightly contested Bundesliga clash."
-  },
-  {
-    id: 9,
-    title: "Chelsea struggle for consistency after frustrating draw",
-    image: "images/news9.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Chelsea dropped points again as their inconsistency continued under the floodlights."
-  },
-  {
-    id: 10,
-    title: "Napoli return to winning ways with convincing performance",
-    image: "images/news10.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Napoli responded well after recent setbacks with a dominant home display."
-  },
-  {
-    id: 11,
-    title: "Tottenham secure dramatic late winner in London derby",
-    image: "images/news11.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "A stoppage-time goal sealed a thrilling victory in a fiery London derby."
-  },
-  {
-    id: 12,
-    title: "AC Milan held as title race tightens in Serie A",
-    image: "images/news12.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "AC Milan dropped points as pressure mounted at the top of the table."
-  },
-  {
-    id: 13,
-    title: "Juventus grind out narrow away win",
-    image: "images/news13.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Juventus showed resilience to secure a hard-fought three points."
-  },
-  {
-    id: 14,
-    title: "Newcastle United continue impressive home form",
-    image: "images/news14.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Newcastle maintained their strong home record with a solid victory."
-  },
-  {
-    id: 15,
-    title: "Atletico Madrid edge past rivals in tense encounter",
-    image: "images/news15.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Atletico claimed bragging rights in a closely contested match."
-  },
-  {
-    id: 16,
-    title: "West Ham push for European qualification",
-    image: "images/news16.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "West Ham’s European ambitions remain alive after a crucial win."
-  },
-  {
-    id: 17,
-    title: "Sevilla suffer setback in Champions League chase",
-    image: "images/news17.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Sevilla slipped up at a critical moment in the season."
-  },
-  {
-    id: 18,
-    title: "Brighton impress with attacking football",
-    image: "images/news18.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Brighton delighted fans with an energetic attacking display."
-  },
-  {
-    id: 19,
-    title: "RB Leipzig close gap on Bundesliga leaders",
-    image: "images/news19.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Leipzig’s win keeps the Bundesliga title race interesting."
-  },
-  {
-    id: 20,
-    title: "Roma snatch late draw in dramatic finish",
-    image: "images/news20.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "A late equaliser rescued a point for Roma in stoppage time."
-  },
-  {
-    id: 21,
-    title: "Lyon bounce back after disappointing run",
-    image: "images/news21.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Lyon responded positively following recent struggles."
-  },
-  {
-    id: 22,
-    title: "Everton ease relegation fears with vital win",
-    image: "images/news22.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Everton took a big step toward safety with a crucial victory."
-  },
-  {
-    id: 23,
-    title: "Monaco keep pressure on top four",
-    image: "images/news23.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Monaco remain firmly in the hunt for Champions League qualification."
-  },
-  {
-    id: 24,
-    title: "Aston Villa continue remarkable season",
-    image: "images/news24.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Villa’s impressive campaign shows no signs of slowing down."
-  },
-  {
-    id: 25,
-    title: "Sporting CP maintain unbeaten league run",
-    image: "images/news25.jpg",
-    author: "FootyVerse",
-    date: "Today",
-    content: "Sporting continued their strong domestic form with another win."
-  }
+// ===== SAMPLE TOP NEWS DATA =====
+const topNews = [
+  { id: 1, title: "Ronaldo scores a hat-trick", author: "John Doe", image: "images/news1.jpg", page: "article1.html" },
+  { id: 2, title: "Mbappé joins PSG mega transfer", author: "Jane Smith", image: "images/news2.jpg", page: "article2.html" },
+  { id: 3, title: "Messi wins another Ballon d'Or", author: "Alex Brown", image: "images/news3.jpg", page: "article3.html" },
+  { id: 4, title: "Al Hilal wins Saudi Pro League", author: "Sara Ali", image: "images/news4.jpg", page: "article4.html" },
+  { id: 5, title: "Manchester United signs new striker", author: "David Green", image: "images/news5.jpg", page: "article5.html" },
+  { id: 6, title: "Barcelona defeats Real Madrid in El Clasico", author: "Luis Martinez", image: "images/news6.jpg", page: "article6.html" },
+  { id: 7, title: "Juventus clinches Serie A title", author: "Mario Rossi", image: "images/news7.jpg", page: "article7.html" },
+  { id: 8, title: "Bayern Munich dominates Bundesliga", author: "Anna Schmidt", image: "images/news8.jpg", page: "article8.html" },
+  { id: 9, title: "Paris Saint-Germain signs new midfielder", author: "Jean Dupont", image: "images/news9.jpg", page: "article9.html" },
+  { id: 10, title: "MLS season kicks off with record attendance", author: "Michael Lee", image: "images/news10.jpg", page: "article10.html" },
+  { id: 11, title: "Saudi Pro League attracts European stars", author: "Faisal Al-Harbi", image: "images/news11.jpg", page: "article11.html" },
+  { id: 12, title: "Liverpool secures Champions League spot", author: "Emma Taylor", image: "images/news12.jpg", page: "article12.html" },
+  { id: 13, title: "Arsenal wins dramatic match against Chelsea", author: "Oliver Smith", image: "images/news13.jpg", page: "article13.html" },
+  { id: 14, title: "Real Madrid suffers injury blow", author: "Carlos Garcia", image: "images/news14.jpg", page: "article14.html" },
+  { id: 15, title: "Inter Milan tops Serie A table", author: "Francesco Bianchi", image: "images/news15.jpg", page: "article15.html" },
+  { id: 16, title: "Bayern Munich signs new defender", author: "Helga Müller", image: "images/news16.jpg", page: "article16.html" },
+  { id: 17, title: "Chelsea transfers: summer window recap", author: "George Wilson", image: "images/news17.jpg", page: "article17.html" },
+  { id: 18, title: "Lionel Messi sets scoring record", author: "Ana Costa", image: "images/news18.jpg", page: "article18.html" },
+  { id: 19, title: "Tottenham Hotspur wins thrilling match", author: "James Brown", image: "images/news19.jpg", page: "article19.html" },
+  { id: 20, title: "AC Milan signs young talent", author: "Luca Romano", image: "images/news20.jpg", page: "article20.html" },
+  { id: 21, title: "Manchester City dominates Premier League", author: "Sophie Clarke", image: "images/news21.jpg", page: "article21.html" },
+  { id: 22, title: "PSG faces tough Champions League draw", author: "Pierre Laurent", image: "images/news22.jpg", page: "article22.html" },
+  { id: 23, title: "MLS star sets record goal", author: "Kevin Johnson", image: "images/news23.jpg", page: "article23.html" },
+  { id: 24, title: "Saudi Pro League expands with new clubs", author: "Omar Al-Farsi", image: "images/news24.jpg", page: "article24.html" },
+  { id: 25, title: "Liverpool signs new goalkeeper", author: "Emily Watson", image: "images/news25.jpg", page: "article25.html" }
 ];
 
-/* ================= HERO ================= */
-const hero = document.getElementById("hero");
-if (hero) {
-  const main = homeNews[0];
+// ===== RENDER HERO =====
+function renderHero(newsItem) {
+  const hero = document.getElementById('hero');
   hero.innerHTML = `
-    <div class="news-card hero-card" onclick="openArticle(${main.id})">
-      <img src="${main.image}">
+    <div class="hero-card" onclick="window.location.href='${newsItem.page}'">
+      <img src="${newsItem.image}" alt="${newsItem.title}">
       <div class="news-info">
-        <h2>${main.title}</h2>
-        <span>${main.author} • ${main.date}</span>
+        <h2>${newsItem.title}</h2>
+        <span>By ${newsItem.author}</span>
       </div>
     </div>
   `;
 }
 
-/* ================= RENDER 25 ================= */
-const newsContainer = document.getElementById("top-news");
-if (newsContainer) {
-  homeNews.forEach(news => {
-    newsContainer.innerHTML += `
-      <div class="news-card" onclick="openArticle(${news.id})">
-        <img src="${news.image}">
-        <div class="news-info">
-          <h3>${news.title}</h3>
-          <span>${news.author} • ${news.date}</span>
-        </div>
+// ===== RENDER TOP NEWS =====
+function renderNews(newsArray) {
+  const topNewsContainer = document.getElementById('top-news');
+  topNewsContainer.innerHTML = '';
+  newsArray.forEach(news => {
+    const card = document.createElement('div');
+    card.classList.add('news-card');
+    card.innerHTML = `
+      <img src="${news.image}" alt="${news.title}">
+      <div class="news-info">
+        <h3>${news.title}</h3>
+        <span>By ${news.author}</span>
       </div>
     `;
+    card.onclick = () => {
+      window.location.href = news.page;
+    };
+    topNewsContainer.appendChild(card);
   });
 }
 
-/* ================= ARTICLE REDIRECT ================= */
-function openArticle(id) {
-  const article = homeNews.find(n => n.id === id);
-  localStorage.setItem("articleData", JSON.stringify(article));
-  window.location.href = "article.html";
+// ===== MENU FUNCTIONALITY =====
+function initMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const overlay = document.querySelector('.overlay');
+  const navItems = document.querySelectorAll('.nav-item');
+  const submenuParents = document.querySelectorAll('.submenu-parent');
+
+  // Open menu
+  menuToggle.onclick = () => {
+    sideMenu.classList.add('active');
+    overlay.classList.add('active');
+  };
+
+  // Close menu
+  function close() {
+    sideMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    submenuParents.forEach(p => p.classList.remove('open'));
+  }
+
+  closeMenu.onclick = close;
+  overlay.onclick = close;
+
+  // Submenu toggle
+  submenuParents.forEach(parent => {
+    parent.addEventListener('click', e => {
+      e.stopPropagation(); // Prevent closing menu
+      parent.classList.toggle('open');
+    });
+  });
+
+  // Menu item click
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const page = item.getAttribute('data-page');
+      if (page) {
+        window.location.href = page;
+      }
+    });
+  });
 }
+
+// ===== INITIAL RENDER =====
+renderHero(topNews[0]); // First news as hero
+renderNews(topNews);     // Render top 25 news

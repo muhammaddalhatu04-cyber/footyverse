@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FootyVerse - Home</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="menu/menu.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div id="logo-name">
+    <span id="footy">Footy</span><span id="verse">Verse</span>
+    <img src="images/logo.jpg" alt="FootyVerse Logo" id="logo-img">
+  </div>
+  <div id="hamburger-menu">☰</div>
+</header>
+
+<!-- MENU PLACEHOLDER -->
+<div id="menu-placeholder"></div>
+
+<!-- TOP NEWS SECTION -->
+<section id="top-news"></section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div id="footer-top">
+    <div id="faq">
+      <h4>FAQ</h4>
+      <ul>
+        <li><a href="faq.html">How to use FootyVerse?</a></li>
+        <li><a href="faq.html">Submit news</a></li>
+        <li><a href="faq.html">Report bugs</a></li>
+      </ul>
+    </div>
+    <div id="privacy">
+      <h4>Privacy Notice</h4>
+      <a href="privacy.html">Read our privacy policy</a>
+    </div>
+    <div id="socials">
+      <h4>Connect with us</h4>
+      <div class="social-row">
+        <a href="https://instagram.com/footyverse" target="_blank">Instagram</a>
+        <a href="https://twitter.com/footyverse" target="_blank">X</a>
+        <a href="https://tiktok.com/@footyverse" target="_blank">TikTok</a>
+      </div>
+      <div class="social-row">
+        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        <a href="https://t.me/footyverse" target="_blank">Telegram</a>
+      </div>
+    </div>
+  </div>
+  <div id="footer-bottom">
+    &copy; 2026 FootyVerse Inc.
+  </div>
+</footer>
+
+<!-- SCRIPT -->
+<script src="menu/menu.js"></script>
+<script src="script.js"></script>
+<script>
+// Load menu.html dynamically
+fetch('menu/menu.html')
+  .then(res => res.text())
+  .then(data => document.getElementById('menu-placeholder').innerHTML = data);
+</script>
+</body>
+</html>

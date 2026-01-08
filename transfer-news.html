@@ -1,35 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Transfer News | FootyVerse</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FootyVerse - Transfer News</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="header">
-  <button class="hamburger" id="menuToggle">☰</button>
-  <img src="images/logo.png" class="logo">
-</header>
+<!-- MENU -->
+<div id="menu-placeholder"></div>
 
-<div class="controls">
-  <input type="text" id="searchInput" placeholder="Search transfers...">
-  <select id="sortSelect">
-    <option value="newest">Newest</option>
-    <option value="oldest">Oldest</option>
-    <option value="confirmed">Confirmed</option>
-    <option value="rumor">Rumor</option>
-    <option value="here-we-go">Here We Go</option>
-  </select>
+<!-- BACK BUTTON -->
+<div id="back-btn" style="position:fixed; top:100px; left:20px; z-index:1000; background:rgba(255,255,255,0.9); padding:10px 15px; border-radius:6px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.3); font-weight:bold;">
+  ← Back
 </div>
 
-<main class="content">
-  <section class="news-grid" id="transferContainer"></section>
-</main>
+<!-- HERO / FILTER SECTION -->
+<section id="transfer-hero" style="width:90%; max-width:1200px; margin:160px auto 20px auto; display:flex; flex-direction:column; gap:20px;">
+  <h1 style="font-weight:bold; font-size:2rem;">Latest Transfer News</h1>
 
-<footer class="footer">© 2026 FootyVerse Inc.</footer>
+  <!-- Filters -->
+  <div id="filters" style="display:flex; flex-wrap:wrap; gap:10px;">
+    <input type="text" id="searchInput" placeholder="Search Player" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
+    <select id="clubFilter" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
+      <option value="all">All Clubs</option>
+      <!-- EPL -->
+      <option value="arsenal">Arsenal</option>
+      <option value="manchester city">Manchester City</option>
+      <option value="manchester united">Manchester United</option>
+      <option value="chelsea">Chelsea</option>
+      <option value="liverpool">Liverpool</option>
+      <option value="tottenham">Tottenham Hotspur</option>
+      <option value="newcastle">Newcastle United</option>
+      <!-- La Liga -->
+      <option value="real madrid">Real Madrid</option>
+      <option value="barcelona">Barcelona</option>
+      <option value="atletico madrid">Atletico Madrid</option>
+      <option value="sevilla">Sevilla</option>
+      <option value="valencia">Valencia</option>
+      <!-- Serie A -->
+      <option value="juventus">Juventus</option>
+      <option value="inter milan">Inter Milan</option>
+      <option value="ac milan">AC Milan</option>
+      <option value="napoli">Napoli</option>
+      <!-- Bundesliga -->
+      <option value="bayern munich">Bayern Munich</option>
+      <option value="borussia dortmund">Borussia Dortmund</option>
+      <option value="leipzig">RB Leipzig</option>
+      <option value="leverkusen">Bayer Leverkusen</option>
+      <!-- Ligue 1 -->
+      <option value="psg">PSG</option>
+      <option value="marseille">Marseille</option>
+      <option value="lyon">Lyon</option>
+      <!-- MLS -->
+      <option value="la galaxy">LA Galaxy</option>
+      <option value="inter miami">Inter Miami</option>
+      <option value="new york red bulls">New York Red Bulls</option>
+      <!-- Saudi Pro League -->
+      <option value="al-nassr">Al-Nassr</option>
+      <option value="al-hilal">Al-Hilal</option>
+      <option value="al-ittihad">Al-Ittihad</option>
+    </select>
+    <select id="sortFilter" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
+      <option value="latest">Latest</option>
+      <option value="confirmed">Confirmed</option>
+      <option value="a-z">A-Z</option>
+      <option value="z-a">Z-A</option>
+    </select>
+  </div>
+</section>
 
-<script src="script.js"></script>
+<!-- TRANSFER CARDS -->
+<section id="transfer-cards" style="width:90%; max-width:1200px; margin:20px auto; display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:20px;"></section>
+
+<!-- FOOTER (same as before) -->
+<footer>
+  <div id="footer-top" style="width:90%; max-width:1200px; margin:0 auto; padding:20px 0; display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
+    
+    <!-- FAQ -->
+    <div id="faq">
+      <h4>FAQ</h4>
+      <ul style="list-style:none; padding-left:0;">
+        <li><a href="faq.html">How to use FootyVerse?</a></li>
+        <li><a href="faq.html">How to submit news?</a></li>
+        <li><a href="faq.html">How to report bugs?</a></li>
+      </ul>
+    </div>
+
+    <!-- Privacy -->
+    <div id="privacy">
+      <h4>Privacy Notice</h4>
+      <a href="privacy.html">Read our privacy policy</a>
+    </div>
+
+    <!-- Ads -->
+    <div id="ads">
+      <h4>Advertisements</h4>
+      <div style="background:rgba(10,31,68,0.1); padding:10px; border-radius:6px;">Your Ad Here</div>
+    </div>
+
+    <!-- Social Links -->
+    <div id="socials">
+      <h4>Connect with us</h4>
+      <div style="display:flex; gap:10px;">
+        <a href="https://instagram.com/footyverse" target="_blank">Instagram</a>
+        <a href="https://twitter.com/footyverse" target="_blank">X</a>
+        <a href="https://tiktok.com/@footyverse" target="_blank">TikTok</a>
+        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        <a href="https://t.me/footyverse" target="_blank">Telegram</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer-bottom" style="text-align:center; padding:15px 0; background:rgba(10,31,68,0.95); color:#fff; font-weight:bold;">
+    &copy; 2026 FootyVerse Inc.
+  </div>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+// ===== LOAD MENU =====
+fetch('menu.html')
+  .then(res => res.text())
+  .then(data => document.getElementById('menu-placeholder').innerHTML = data);
+
+// ===== BACK BUTTON =====
+document.getElementById('back-btn').addEventListener('click', () => {
+  window.history.back();
+});
+
+// ===== TRANSFER DATA =====
+const transfers = [
+  {player:"Kylian Mbappé", club:"PSG", type:"Confirmed", img:"images/transfer1.jpg", page:"transfer1.html"},
+  {player:"Erling Haaland", club:"Manchester City", type:"Latest", img:"images/transfer2.jpg", page:"transfer2.html"},
+  {player:"Ronaldo", club:"Al-Nassr", type:"Confirmed", img:"images/transfer3.jpg", page:"transfer3.html"},
+  {player:"Lionel Messi", club:"Inter Miami", type:"Latest", img:"images/transfer4.jpg", page:"transfer4.html"},
+  {player:"Darwin Núñez", club:"Liverpool", type:"Confirmed", img:"images/transfer5.jpg", page:"transfer5.html"},
+  {player:"Gabriel Jesus", club:"Arsenal", type:"Latest", img:"images/transfer6.jpg", page:"transfer6.html"},
+  {player:"Jude Bellingham", club:"Real Madrid", type:"Confirmed", img:"images/transfer7.jpg", page:"transfer7.html"},
+  {player:"Vinicius Jr", club:"Real Madrid", type:"Latest", img:"images/transfer8.jpg", page:"transfer8.html"},
+  {player:"Pedri", club:"Barcelona", type:"Confirmed", img:"images/transfer9.jpg", page:"transfer9.html"},
+  {player:"Robert Lewandowski", club:"Barcelona", type:"Latest", img:"images/transfer10.jpg", page:"transfer10.html"},
+  // ... add more for unlimited transfers
+];
+
+// ===== RENDER FUNCTION =====
+const transferSection = document.getElementById('transfer-cards');
+function renderTransfers(data){
+  transferSection.innerHTML = "";
+  data.forEach(t => {
+    const card = document.createElement('div');
+    card.className = "transfer-card";
+    card.style.cursor = "pointer";
+    card.style.borderRadius = "8px";
+    card.style.overflow = "hidden";
+    card.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+    card.style.transition = "transform 0.2s";
+    card.onmouseover = () => card.style.transform = "scale(1.03)";
+    card.onmouseleave = () => card.style.transform = "scale(1)";
+    card.innerHTML = `
+      <img src="${t.img}" alt="${t.player}" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:10px;">
+        <h3 style="font-weight:bold;">${t.player}</h3>
+        <p>Club: ${t.club}</p>
+        <p>Type: ${t.type}</p>
+      </div>
+    `;
+    card.onclick = () => window.location.href = t.page;
+    transferSection.appendChild(card);
+  });
+}
+
+// INITIAL RENDER
+renderTransfers(transfers);
+
+// ===== FILTERS =====
+document.getElementById('searchInput').addEventListener('input', e=>{
+  const val = e.target.value.toLowerCase();
+  const filtered = transfers.filter(t=> t.player.toLowerCase().includes(val));
+  renderTransfers(filtered);
+});
+
+document.getElementById('clubFilter').addEventListener('change', e=>{
+  const val = e.target.value.toLowerCase();
+  const filtered = val === "all" ? transfers : transfers.filter(t=> t.club.toLowerCase() === val);
+  renderTransfers(filtered);
+});
+
+document.getElementById('sortFilter').addEventListener('change', e=>{
+  let sorted = [...transfers];
+  if(e.target.value === "a-z") sorted.sort((a,b)=> a.player.localeCompare(b.player));
+  if(e.target.value === "z-a") sorted.sort((a,b)=> b.player.localeCompare(a.player));
+  if(e.target.value === "latest") sorted.sort((a,b)=> transfers.indexOf(b) - transfers.indexOf(a));
+  if(e.target.value === "confirmed") sorted = transfers.filter(t=> t.type.toLowerCase()==="confirmed");
+  renderTransfers(sorted);
+});
+</script>
 </body>
 </html>

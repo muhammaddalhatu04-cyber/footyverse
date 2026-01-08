@@ -1,42 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FootyVerse</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FootyVerse - Home</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ===== MENU PLACEHOLDER ===== -->
-  <div id="menu-placeholder"></div>
+<!-- MENU -->
+<div id="menu-placeholder"></div>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section id="hero">
-    <!-- Hero news card rendered dynamically -->
-  </section>
+<!-- HERO / TOP NEWS SECTION -->
+<section id="top-news" style="width:90%; max-width:1200px; margin:120px auto 40px auto; display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:20px;">
+</section>
 
-  <!-- ===== TOP NEWS ===== -->
-  <section id="top-news">
-    <!-- Top 25 news cards rendered dynamically -->
-  </section>
+<!-- FOOTER -->
+<footer>
+  <div id="footer-top" style="width:90%; max-width:1200px; margin:0 auto; padding:20px 0; display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
+    
+    <!-- FAQ -->
+    <div id="faq">
+      <h4>FAQ</h4>
+      <ul style="list-style:none; padding-left:0;">
+        <li><a href="faq.html">How to use FootyVerse?</a></li>
+        <li><a href="faq.html">How to submit news?</a></li>
+        <li><a href="faq.html">How to report bugs?</a></li>
+      </ul>
+    </div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
+    <!-- Privacy -->
+    <div id="privacy">
+      <h4>Privacy Notice</h4>
+      <a href="privacy.html">Read our privacy policy</a>
+    </div>
+
+    <!-- Ads -->
+    <div id="ads">
+      <h4>Advertisements</h4>
+      <div style="background:rgba(10,31,68,0.1); padding:10px; border-radius:6px;">Your Ad Here</div>
+    </div>
+
+    <!-- Social Links -->
+    <div id="socials">
+      <h4>Connect with us</h4>
+      <div style="display:flex; gap:10px;">
+        <a href="https://instagram.com/footyverse" target="_blank">Instagram</a>
+        <a href="https://twitter.com/footyverse" target="_blank">X</a>
+        <a href="https://tiktok.com/@footyverse" target="_blank">TikTok</a>
+        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        <a href="https://t.me/footyverse" target="_blank">Telegram</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer-bottom" style="text-align:center; padding:15px 0; background:rgba(10,31,68,0.95); color:#fff; font-weight:bold;">
     &copy; 2026 FootyVerse Inc.
-  </footer>
+  </div>
+</footer>
 
-  <!-- ===== SCRIPT ===== -->
-  <script src="script.js"></script>
-  <script>
-    // Load universal menu from menu.html
-    fetch('menu.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('menu-placeholder').innerHTML = data;
-        initMenu(); // Initialize menu after loading
-      });
-  </script>
+<!-- SCRIPT -->
+<script>
+// ===== LOAD MENU =====
+fetch('menu.html')
+  .then(res => res.text())
+  .then(data => document.getElementById('menu-placeholder').innerHTML = data);
 
+// ===== TOP NEWS DATA (25 NEWS) =====
+const topNews = [
+  {title:"Ronaldo Hat-trick vs Al Hilal", img:"images/news1.jpg", page:"news1.html", author:"M. Dalhatu"},
+  {title:"Mbappé joins PSG dream team", img:"images/news2.jpg", page:"news2.html", author:"M. Dalhatu"},
+  {title:"Haaland scores 4 in EPL", img:"images/news3.jpg", page:"news3.html", author:"M. Dalhatu"},
+  {title:"Messi assists twice for Inter Miami", img:"images/news4.jpg", page:"news4.html", author:"M. Dalhatu"},
+  {title:"Man City wins FA Cup", img:"images/news5.jpg", page:"news5.html", author:"M. Dalhatu"},
+  {title:"Liverpool signs teenage prodigy", img:"images/news6.jpg", page:"news6.html", author:"M. Dalhatu"},
+  {title:"Chelsea under pressure after draw", img:"images/news7.jpg", page:"news7.html", author:"M. Dalhatu"},
+  {title:"Arsenal's comeback hero", img:"images/news8.jpg", page:"news8.html", author:"M. Dalhatu"},
+  {title:"Barcelona wins El Clasico", img:"images/news9.jpg", page:"news9.html", author:"M. Dalhatu"},
+  {title:"Real Madrid signs rising star", img:"images/news10.jpg", page:"news10.html", author:"M. Dalhatu"},
+  {title:"Serie A updates: AC Milan dominates", img:"images/news11.jpg", page:"news11.html", author:"M. Dalhatu"},
+  {title:"Bundesliga transfer rumors", img:"images/news12.jpg", page:"news12.html", author:"M. Dalhatu"},
+  {title:"Ligue 1: Monaco surprises PSG", img:"images/news13.jpg", page:"news13.html", author:"M. Dalhatu"},
+  {title:"MLS: LA Galaxy stuns rivals", img:"images/news14.jpg", page:"news14.html", author:"M. Dalhatu"},
+  {title:"Saudi Pro League: Al-Nassr signs star", img:"images/news15.jpg", page:"news15.html", author:"M. Dalhatu"},
+  {title:"EPL relegation battle heats up", img:"images/news16.jpg", page:"news16.html", author:"M. Dalhatu"},
+  {title:"Transfer gossip: top moves", img:"images/news17.jpg", page:"news17.html", author:"M. Dalhatu"},
+  {title:"UCL: PSG vs Bayern thriller", img:"images/news18.jpg", page:"news18.html", author:"M. Dalhatu"},
+  {title:"Player comparison: Haaland vs Ronaldo", img:"images/news19.jpg", page:"news19.html", author:"M. Dalhatu"},
+  {title:"New manager at Arsenal", img:"images/news20.jpg", page:"news20.html", author:"M. Dalhatu"},
+  {title:"MLS superstar makes debut", img:"images/news21.jpg", page:"news21.html", author:"M. Dalhatu"},
+  {title:"Bundesliga title race", img:"images/news22.jpg", page:"news22.html", author:"M. Dalhatu"},
+  {title:"La Liga: Sevilla shocks Real", img:"images/news23.jpg", page:"news23.html", author:"M. Dalhatu"},
+  {title:"Serie A: Napoli vs Juventus", img:"images/news24.jpg", page:"news24.html", author:"M. Dalhatu"},
+  {title:"EPL: Newcastle wins dramatic match", img:"images/news25.jpg", page:"news25.html", author:"M. Dalhatu"}
+];
+
+// ===== RENDER TOP NEWS =====
+const topNewsSection = document.getElementById('top-news');
+topNews.forEach(news => {
+  const card = document.createElement('div');
+  card.className = "news-card";
+  card.innerHTML = `
+    <img src="${news.img}" alt="${news.title}">
+    <div class="news-info">
+      <h3>${news.title}</h3>
+      <span>Author: ${news.author}</span>
+    </div>
+  `;
+  card.onclick = () => window.location.href = news.page;
+  topNewsSection.appendChild(card);
+});
+</script>
 </body>
 </html>

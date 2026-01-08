@@ -1,4 +1,3 @@
-// Wait for menu HTML to load before attaching listeners
 function initMenu() {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
@@ -52,10 +51,10 @@ function initMenu() {
   });
 }
 
-// Load menu HTML dynamically and initialize
+// Load menu dynamically and initialize
 fetch('menu/menu.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('menu-placeholder').innerHTML = data;
-    initMenu();  // <-- Attach all event listeners AFTER menu is loaded
+    initMenu(); // Attach all listeners AFTER loading menu
   });

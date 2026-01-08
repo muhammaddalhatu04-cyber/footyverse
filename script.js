@@ -4,11 +4,13 @@ const sideMenu = document.getElementById("sideMenu");
 const closeMenu = document.getElementById("closeMenu");
 const overlay = document.getElementById("overlay");
 
+// Open menu
 menuToggle.onclick = () => {
   sideMenu.classList.add("active");
   overlay.classList.add("active");
 };
 
+// Close menu
 function closeAll() {
   sideMenu.classList.remove("active");
   overlay.classList.remove("active");
@@ -20,10 +22,12 @@ function closeAll() {
 closeMenu.onclick = closeAll;
 overlay.onclick = closeAll;
 
+// Submenu toggle
 document.querySelectorAll(".submenu-parent").forEach(parent => {
   parent.onclick = () => parent.classList.toggle("open");
 });
 
+// Menu item clicks
 document.querySelectorAll(".nav-item").forEach(item => {
   item.onclick = () => {
     const page = item.dataset.page;
@@ -33,6 +37,7 @@ document.querySelectorAll(".nav-item").forEach(item => {
   };
 });
 
+// Submenu item clicks (leagues under Match Updates)
 document.querySelectorAll(".submenu-item").forEach(item => {
   item.onclick = () => {
     window.location.href = `${item.dataset.page}.html`;
@@ -121,8 +126,6 @@ const homeNews = [
     date: "Today",
     content: "Napoli responded well after recent setbacks with a dominant home display."
   },
-
-  /* 11–25 */
   {
     id: 11,
     title: "Tottenham secure dramatic late winner in London derby",
@@ -276,41 +279,9 @@ if (newsContainer) {
   });
 }
 
-/* ================= TRANSFER NEWS (UNLIMITED) ================= */
-const transferNews = [
-  {
-    id: 101,
-    title: "Manchester United open talks for Bundesliga striker",
-    club: "Manchester United",
-    content: "United have initiated contact with representatives as they look to reinforce their attack."
-  },
-  {
-    id: 102,
-    title: "PSG prepare €90m bid for Premier League star",
-    club: "PSG",
-    content: "Paris Saint-Germain are ready to make a major move this summer."
-  },
-  {
-    id: 103,
-    title: "Barcelona monitoring free-agent options",
-    club: "Barcelona",
-    content: "Financial constraints force Barcelona to explore the free market."
-  },
-  {
-    id: 104,
-    title: "Arsenal confident of sealing summer signing early",
-    club: "Arsenal",
-    content: "Arsenal want business done before pre-season begins."
-  }
-  // ➕ ADD UNLIMITED TRANSFERS HERE
-];
-
 /* ================= ARTICLE REDIRECT ================= */
 function openArticle(id) {
-  const article =
-    homeNews.find(n => n.id === id) ||
-    transferNews.find(t => t.id === id);
-
+  const article = homeNews.find(n => n.id === id);
   localStorage.setItem("articleData", JSON.stringify(article));
   window.location.href = "article.html";
 }

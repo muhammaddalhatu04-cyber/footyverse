@@ -7,54 +7,53 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- ===== HEADER ===== -->
   <header class="header">
-    <div class="logo">FootyVerse</div>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <nav class="nav" id="nav">
+    <div class="logo">
+      <img src="images/logo.png" alt="FootyVerse Logo">
+      <span>FootyVerse</span>
+    </div>
+    <div class="hamburger" id="hamburger">
+      &#9776;
+    </div>
+    <nav class="nav" id="navMenu">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="transfer-news.html">Transfer News</a></li>
-        <li class="submenu">
-          <a href="#">Match Updates</a>
-          <ul class="sub-menu">
-            <li><a href="match-updates/epl.html">EPL</a></li>
-            <li><a href="match-updates/la-liga.html">La Liga</a></li>
-            <li><a href="match-updates/serie-a.html">Serie A</a></li>
-            <li><a href="match-updates/bundesliga.html">Bundesliga</a></li>
-            <li><a href="match-updates/ligue-one.html">Ligue One</a></li>
-            <li><a href="match-updates/mls.html">MLS</a></li>
-            <li><a href="match-updates/saudi-pro-league.html">Saudi Pro League</a></li>
-          </ul>
-        </li>
-        <li><a href="match-news.html">Match News</a></li>
-        <li><a href="player-comparison.html">Player Comparison</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li class="nav-item active" data-section="home">Home</li>
+        <li class="nav-item" data-section="transfer-news">Transfer News</li>
+        <li class="nav-item" data-section="match-updates">Match Updates</li>
+        <li class="nav-item" data-section="match-news">Match News</li>
+        <li class="nav-item" data-section="player-comparison">Player Comparison</li>
+        <li class="nav-item" data-section="shop">Shop</li>
+        <li class="nav-item" data-section="contact-us">Contact Us</li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero / Top News -->
-  <section class="top-news" id="top-news">
-    <!-- Dynamic news cards will load here via JS -->
+  <!-- ===== TOP NEWS HERO ===== -->
+  <section class="top-hero" id="top-hero">
+    <div class="hero-card">
+      <img src="images/ronaldo-hat-trick.jpg" alt="Featured News">
+      <div class="hero-text">
+        <h1>Ronaldo Hat-Trick vs Al Hilal</h1>
+        <p>By John Doe</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="faq">
-      <h3>FAQ</h3>
-      <p>Click each question to see answers dynamically.</p>
+  <!-- ===== TOP NEWS LIST ===== -->
+  <section class="top-news" id="top-news">
+    <!-- News cards will be dynamically inserted here by script.js -->
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Advertise</a>
     </div>
-    <div class="privacy">
-      <p>Privacy Notice</p>
-    </div>
-    <div class="ads">
-      <p>Advertisements</p>
-    </div>
-    <div class="copyright">
-      <p>&copy; 2026 FootyVerse Inc.</p>
-    </div>
+    <p>&copy; 2026 FootyVerse Inc</p>
   </footer>
 
   <script src="script.js"></script>

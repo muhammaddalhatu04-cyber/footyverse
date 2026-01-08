@@ -1,81 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>FootyVerse</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header class="header">
-    <div class="logo">
-      <img src="images/logo.jpg" alt="FootyVerse Logo">
-      <span>FootyVerse</span>
-    </div>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-
-    <!-- ===== NAVIGATION MENU ===== -->
-    <nav class="nav" id="navMenu">
-      <ul>
-        <!-- Back button for full menu -->
-        <li class="nav-back" id="menuBack">&larr; Back</li>
-
-        <!-- Menu items -->
-        <li class="nav-item" data-page="home">Home</li>
-        <li class="nav-item" data-page="transfer-news">Transfer News</li>
-
-        <!-- Match Updates with submenu -->
-        <li class="nav-item submenu-parent" id="matchUpdates">
-          Match Updates
-          <ul class="submenu" id="matchLeagues">
-            <li class="submenu-back" id="submenuBack">&larr; Back</li>
-            <li class="submenu-item" data-page="epl">EPL</li>
-            <li class="submenu-item" data-page="la-liga">La Liga</li>
-            <li class="submenu-item" data-page="serie-a">Serie A</li>
-            <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
-            <li class="submenu-item" data-page="ligue-one">Ligue One</li>
-            <li class="submenu-item" data-page="mls">MLS</li>
-            <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
-            <li class="submenu-item" data-page="champions-league">Champions League</li>
-          </ul>
-        </li>
-
-        <li class="nav-item" data-page="match-news">Match News</li>
-        <li class="nav-item" data-page="player-comparison">Player Comparison</li>
-        <li class="nav-item" data-page="shop">Shop</li>
-        <li class="nav-item" data-page="contact-us">Contact Us</li>
-      </ul>
-    </nav>
+    <button class="hamburger" id="menuToggle">☰</button>
+    <img src="images/logo.png" alt="FootyVerse Logo" class="logo" />
   </header>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section class="top-hero">
-    <div class="hero-card">
-      <img src="images/hero-top-news.JPG" alt="Top News">
-      <div class="hero-text">Biggest Football Headlines Today</div>
+  <!-- SLIDE MENU -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <button class="back-btn" id="closeMenu">←</button>
+      <span>Menu</span>
     </div>
-  </section>
 
-  <!-- ===== TOP NEWS ===== -->
-  <section class="top-news" id="top-news">
-    <!-- JS will dynamically insert news cards here -->
-  </section>
+    <ul class="menu-list">
+      <li class="nav-item active" data-page="home">Home</li>
 
-  <!-- ===== FOOTER ===== -->
+      <li class="nav-item" data-page="transfer-news">
+        Transfer News & Rumors
+      </li>
+
+      <li class="nav-item submenu-parent">
+        Match Updates
+        <ul class="submenu">
+          <li class="submenu-item" data-page="epl">EPL</li>
+          <li class="submenu-item" data-page="la-liga">La Liga</li>
+          <li class="submenu-item" data-page="serie-a">Serie A</li>
+          <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
+          <li class="submenu-item" data-page="ligue-one">Ligue 1</li>
+          <li class="submenu-item" data-page="champions-league">Champions League</li>
+          <li class="submenu-item" data-page="mls">MLS</li>
+          <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
+        </ul>
+      </li>
+
+      <li class="nav-item" data-page="match-news">Match News</li>
+      <li class="nav-item" data-page="comparison">Player Comparison</li>
+      <li class="nav-item" data-page="shop">Shop</li>
+      <li class="nav-item" data-page="contact">Contact Us</li>
+    </ul>
+  </nav>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <section id="top-news" class="news-grid">
+      <!-- JS injects top news here -->
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-links">
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-      <a href="https://tiktok.com" target="_blank">TikTok</a>
-      <a href="https://t.me" target="_blank">Telegram</a>
-      <a href="https://wa.me/your-number" target="_blank">WhatsApp</a>
-    </div>
-    <p>&copy; 2026 FootyVerse Inc</p>
+    <p>© 2026 FootyVerse Inc.</p>
   </footer>
 
-  <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
 </body>
 </html>

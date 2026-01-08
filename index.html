@@ -9,7 +9,7 @@
 <body>
 
   <!-- ===== MENU PLACEHOLDER ===== -->
-  <div id="menu.html"></div>
+  <div id="menu-placeholder"></div>
 
   <!-- ===== HERO SECTION ===== -->
   <section id="hero">
@@ -29,7 +29,7 @@
   <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
   <script>
-    // Load universal menu
+    // Load universal menu from menu.html
     fetch('menu.html')
       .then(res => res.text())
       .then(data => {

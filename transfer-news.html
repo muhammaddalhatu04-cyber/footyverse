@@ -199,4 +199,11 @@ document.getElementById('sortFilter').addEventListener('change', e=>{
 });
 </script>
 </body>
+  <link rel="stylesheet" href="menu/menu.css">
+<script>
+fetch('menu/menu.html')
+  .then(res => res.text())
+  .then(data => document.getElementById('menu-placeholder').innerHTML = data);
+</script>
+<script src="menu/menu.js"></script>
 </html>

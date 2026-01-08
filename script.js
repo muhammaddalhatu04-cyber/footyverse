@@ -14,7 +14,26 @@ const topNews = [
   { title: "Mbappé Scores Winning Goal", img: "images/mbappe.jpg", writer: "Jane Smith", link: "mbappe.html" },
   { title: "Messi Leads PSG to Victory", img: "images/messi.jpg", writer: "Alex Brown", link: "messi.html" }
 ];
-
+const transferNews = [
+  { 
+    title: "Mbappé linked with Real Madrid move", 
+    img: "images/mbappe-transfer.jpg", 
+    writer: "Transfer Guru", 
+    link: "mbappe-transfer.html" 
+  },
+  { 
+    title: "Ronaldo rumored to join Al Nassr permanently", 
+    img: "images/ronaldo-transfer.jpg", 
+    writer: "Football Insider", 
+    link: "ronaldo-transfer.html" 
+  },
+  { 
+    title: "Messi set for PSG contract renewal talks", 
+    img: "images/messi-transfer.jpg", 
+    writer: "Soccer Daily", 
+    link: "messi-transfer.html" 
+  }
+];
 // ===== FUNCTION TO RENDER TOP NEWS =====
 function renderNews(newsArray) {
   newsSection.innerHTML = ""; // Clear existing news

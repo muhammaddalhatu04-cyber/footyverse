@@ -12,20 +12,20 @@ const newsSection = document.getElementById('top-news');
 const topNews = [
   {
     title: "Ronaldo Hat-Trick vs Al Hilal",
-    img: "images/ronaldo.jpg",
-    writer: "John Doe",
+    img: "images/ronaldo.JPG",
+    writer: "Mubeen",
     link: "ronaldo.html"
   },
   {
     title: "Mbappé Scores Winning Goal",
-    img: "images/mbappe.jpg",
-    writer: "Jane Smith",
+    img: "images/mbappe.JPG",
+    writer: "Mubeen",
     link: "mbappe.html"
   },
   {
     title: "Messi Leads PSG to Victory",
-    img: "images/messi.jpg",
-    writer: "Alex Brown",
+    img: "images/messi.JPG",
+    writer: "Mubeen",
     link: "messi.html"
   }
 ];

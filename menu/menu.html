@@ -1,27 +1,41 @@
-<nav id="nav-menu">
-  <div class="menu-header">
-    <span id="menu-back">&larr; Back</span>
-    <img src="images/logo.png" alt="FootyVerse Logo" class="logo">
-    <span id="menu-hamburger">&#9776;</span>
+<div id="menu" class="menu-closed">
+  <div id="menu-header">
+    <button id="menu-back">← Back</button>
   </div>
-
-  <ul class="nav-items">
-    <li class="nav-item" data-page="index.html">Home</li>
-    <li class="nav-item submenu-parent">Match Updates
+  <ul id="menu-list">
+    <li class="menu-item" data-page="index.html">Home</li>
+    <li class="menu-item" data-page="transfer.html">Transfer Updates</li>
+    <li class="menu-item submenu-parent">Match Updates
       <ul class="submenu">
         <li class="submenu-item" data-page="epl.html">EPL</li>
-        <li class="submenu-item" data-page="la-liga.html">La Liga</li>
-        <li class="submenu-item" data-page="serie-a.html">Serie A</li>
+        <li class="submenu-item" data-page="laliga.html">La Liga</li>
+        <li class="submenu-item" data-page="seriea.html">Serie A</li>
         <li class="submenu-item" data-page="bundesliga.html">Bundesliga</li>
-        <li class="submenu-item" data-page="ligue-1.html">Ligue 1</li>
-        <li class="submenu-item" data-page="mls.html">MLS</li>
-        <li class="submenu-item" data-page="saudi-pro-league.html">Saudi Pro League</li>
+        <li class="submenu-item" data-page="ligue1.html">Ligue 1</li>
+        <li class="submenu-item" data-page="ucl.html">UEFA Champions League</li>
+        <li class="submenu-item" data-page="mls.html">Major League Soccer</li>
+        <li class="submenu-item" data-page="saudi.html">Saudi Pro League</li>
       </ul>
     </li>
-    <li class="nav-item" data-page="transfer-news.html">Transfer News</li>
-    <li class="nav-item" data-page="match-news.html">Match News</li>
-    <li class="nav-item" data-page="player-comparison.html">Player Comparison</li>
-    <li class="nav-item" data-page="shop.html">Shop</li>
-    <li class="nav-item" data-page="contact.html">Contact Us</li>
+    <li class="menu-item" data-page="matchnews.html">Match News</li>
+    <li class="menu-item" data-page="playercomparison.html">Player Comparison</li>
+    <li class="menu-item" data-page="shop.html">Shop</li>
   </ul>
-</nav>
+  <div id="menu-footer">
+    <strong>Contact Us</strong>
+    <div id="menu-socials">
+      <div class="social-row">
+        <img src="images/facebook.png" alt="Facebook">
+        <img src="images/x.png" alt="X">
+        <img src="images/tiktok.png" alt="TikTok">
+      </div>
+      <div class="social-row">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+        <img src="images/instagram.png" alt="Instagram">
+      </div>
+    </div>
+    <div id="menu-copyright">
+      &copy; 2026 FootyVerse Inc.
+    </div>
+  </div>
+</div>

@@ -77,3 +77,109 @@ function renderNews() {
 }
 
 renderNews();
+/* ================= TRANSFER DATA ================= */
+
+const transfers = [
+  {
+    id: 1,
+    title: "Mbappé agrees move to Real Madrid",
+    image: "images/mbappe-transfer.jpg",
+    author: "FootyVerse",
+    tag: "Here We Go",
+    date: "2026-01-05",
+    content: "Kylian Mbappé has agreed personal terms with Real Madrid..."
+  },
+  {
+    id: 2,
+    title: "Ronaldo linked with Bayern shock",
+    image: "images/ronaldo-transfer.jpg",
+    author: "FootyVerse",
+    tag: "Rumor",
+    date: "2026-01-03",
+    content: "Cristiano Ronaldo has been linked with a sensational move..."
+  },
+  {
+    id: 3,
+    title: "Chelsea confirm striker signing",
+    image: "images/messi-transfer.jpg",
+    author: "FootyVerse",
+    tag: "Confirmed",
+    date: "2026-01-01",
+    content: "Chelsea Football Club have officially announced..."
+  }
+];
+
+let filteredTransfers = [...transfers];
+
+/* ================= RENDER ================= */
+
+const container = document.getElementById("transferContainer");
+
+function renderTransfers(list) {
+  if (!container) return;
+  container.innerHTML = "";
+
+  list.forEach(t => {
+    container.innerHTML += `
+      <div class="news-card" onclick="openArticle(${t.id})">
+        <img src="${t.image}">
+        <div class="news-info">
+          <span class="tag ${t.tag.toLowerCase().replace(/ /g,'-')}">${t.tag}</span>
+          <h3>${t.title}</h3>
+          <span>${t.author} • ${t.date}</span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+renderTransfers(filteredTransfers);
+
+/* ================= SEARCH ================= */
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+  searchInput.addEventListener("input", e => {
+    const value = e.target.value.toLowerCase();
+
+    filteredTransfers = transfers.filter(t =>
+      t.title.toLowerCase().includes(value)
+    );
+
+    renderTransfers(filteredTransfers);
+  });
+}
+
+/* ================= SORT ================= */
+
+const sortSelect = document.getElementById("sortSelect");
+
+if (sortSelect) {
+  sortSelect.addEventListener("change", e => {
+    const value = e.target.value;
+
+    if (value === "newest") {
+      filteredTransfers.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    if (value === "oldest") {
+      filteredTransfers.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    if (["confirmed", "rumor", "here-we-go"].includes(value)) {
+      filteredTransfers = transfers.filter(
+        t => t.tag.toLowerCase().replace(/ /g,'-') === value
+      );
+    }
+
+    renderTransfers(filteredTransfers);
+  });
+}
+
+/* ================= ARTICLE ================= */
+
+function openArticle(id) {
+  localStorage.setItem("articleId", id);
+  window.location.href = "article.html";
+}

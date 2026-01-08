@@ -162,3 +162,30 @@ body {
   padding: 20px;
   opacity: 0.7;
 }
+.controls {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+}
+
+.controls input,
+.controls select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.85);
+  font-size: 14px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.here-we-go { background: #1db954; color: #fff; }
+.confirmed { background: #007bff; color: #fff; }
+.rumor { background: #ff9800; color: #fff; }

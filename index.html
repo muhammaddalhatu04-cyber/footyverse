@@ -8,73 +8,74 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="header">
-  <div class="logo">
-    <img src="images/logo.png" alt="FootyVerse Logo">
-    <span>FootyVerse</span>
-  </div>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="logo">
+      <img src="images/logo.png" alt="FootyVerse Logo">
+      <span>FootyVerse</span>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
 
-  <div class="hamburger" id="hamburger">&#9776;</div>
+    <!-- ===== NAVIGATION MENU ===== -->
+    <nav class="nav" id="navMenu">
+      <ul>
+        <!-- Back button for full menu -->
+        <li class="nav-back" id="menuBack">&larr; Back</li>
 
-  <!-- ===== NAVIGATION MENU ===== -->
-  <nav class="nav" id="navMenu">
-    <ul>
-      <!-- BACK BUTTON for full menu -->
-      <li class="nav-back" id="menuBack">&larr; Back</li>
+        <!-- Menu items -->
+        <li class="nav-item" data-page="home">Home</li>
+        <li class="nav-item" data-page="transfer-news">Transfer News</li>
 
-      <li class="nav-item" data-page="home">Home</li>
-      <li class="nav-item" data-page="transfer-news">Transfer News</li>
+        <!-- Match Updates with submenu -->
+        <li class="nav-item submenu-parent" id="matchUpdates">
+          Match Updates
+          <ul class="submenu" id="matchLeagues">
+            <li class="submenu-back" id="submenuBack">&larr; Back</li>
+            <li class="submenu-item" data-page="epl">EPL</li>
+            <li class="submenu-item" data-page="la-liga">La Liga</li>
+            <li class="submenu-item" data-page="serie-a">Serie A</li>
+            <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
+            <li class="submenu-item" data-page="ligue-one">Ligue One</li>
+            <li class="submenu-item" data-page="mls">MLS</li>
+            <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
+            <li class="submenu-item" data-page="champions-league">Champions League</li>
+          </ul>
+        </li>
 
-      <!-- MATCH UPDATES with submenu -->
-      <li class="nav-item submenu-parent" id="matchUpdates">
-        Match Updates
-        <ul class="submenu" id="matchLeagues">
-          <li class="submenu-back" id="submenuBack">&larr; Back</li>
-          <li class="submenu-item" data-page="epl">EPL</li>
-          <li class="submenu-item" data-page="la-liga">La Liga</li>
-          <li class="submenu-item" data-page="serie-a">Serie A</li>
-          <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
-          <li class="submenu-item" data-page="ligue-one">Ligue One</li>
-          <li class="submenu-item" data-page="mls">MLS</li>
-          <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
-          <li class="submenu-item" data-page="champions-league">Champions League</li>
-        </ul>
-      </li>
+        <li class="nav-item" data-page="match-news">Match News</li>
+        <li class="nav-item" data-page="player-comparison">Player Comparison</li>
+        <li class="nav-item" data-page="shop">Shop</li>
+        <li class="nav-item" data-page="contact-us">Contact Us</li>
+      </ul>
+    </nav>
+  </header>
 
-      <li class="nav-item" data-page="match-news">Match News</li>
-      <li class="nav-item" data-page="player-comparison">Player Comparison</li>
-      <li class="nav-item" data-page="shop">Shop</li>
-      <li class="nav-item" data-page="contact-us">Contact Us</li>
-    </ul>
-  </nav>
-</header>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="top-hero">
+    <div class="hero-card">
+      <img src="images/hero-top-news.jpg" alt="Top News">
+      <div class="hero-text">Biggest Football Headlines Today</div>
+    </div>
+  </section>
 
-<!-- ===== HERO SECTION ===== -->
-<section class="top-hero">
-  <div class="hero-card">
-    <img src="images/hero-top-news.jpg" alt="Top News">
-    <div class="hero-text">Biggest Football Headlines Today</div>
-  </div>
-</section>
+  <!-- ===== TOP NEWS ===== -->
+  <section class="top-news" id="top-news">
+    <!-- JS will dynamically insert news cards here -->
+  </section>
 
-<!-- ===== TOP NEWS ===== -->
-<section class="top-news" id="top-news">
-  <!-- News cards dynamically loaded via JS -->
-</section>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://tiktok.com" target="_blank">TikTok</a>
+      <a href="https://t.me" target="_blank">Telegram</a>
+      <a href="https://wa.me/your-number" target="_blank">WhatsApp</a>
+    </div>
+    <p>&copy; 2026 FootyVerse Inc</p>
+  </footer>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-links">
-    <a href="https://instagram.com" target="_blank">Instagram</a>
-    <a href="https://twitter.com" target="_blank">Twitter</a>
-    <a href="https://tiktok.com" target="_blank">TikTok</a>
-    <a href="https://t.me" target="_blank">Telegram</a>
-    <a href="https://wa.me/your-number" target="_blank">WhatsApp</a>
-  </div>
-  <p>&copy; 2026 FootyVerse Inc</p>
-</footer>
-
-<script src="script.js"></script>
+  <!-- ===== SCRIPT ===== -->
+  <script src="script.js"></script>
 </body>
 </html>

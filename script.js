@@ -19,20 +19,20 @@ navItems.forEach(item => {
 const topNews = [
   {
     title: "Ronaldo Hat-Trick vs Al Hilal",
-    img: "images/ronaldo-hat-trick.jpg",
-    writer: "John Doe",
+    img: "images/ronaldo-hat-trick.JPG",
+    writer: "Mubeen",
     link: "#"
   },
   {
     title: "Mbappé Scores Winning Goal",
-    img: "images/mbappe-goal.jpg",
-    writer: "Jane Smith",
+    img: "images/mbappe-goal.JPG",
+    writer: "Dalhatu",
     link: "#"
   },
   {
     title: "Messi Leads PSG to Victory",
-    img: "images/messi-victory.jpg",
-    writer: "Alex Brown",
+    img: "images/messi-victory.JPG",
+    writer: "Bintu",
     link: "#"
   }
   // Add more news objects here dynamically

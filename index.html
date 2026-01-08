@@ -5,183 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FootyVerse - Home</title>
 <link rel="stylesheet" href="styles.css">
-<style>
-/* ================= STYLES ================= */
-
-/* BODY */
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #f5f0ff, #dff7ff, #ffe4f5, #e0f0ff);
-  background-size: 400% 400%;
-  animation: gradientBG 30s ease infinite;
-  overflow-x: hidden;
-}
-
-/* GRADIENT ANIMATION */
-@keyframes gradientBG {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* HEADER */
-header {
-  position: fixed;
-  top:0; left:0; width:100%;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 20px; background: rgba(255,192,203,0.5); /* light pink liquid glass */
-  backdrop-filter: blur(10px);
-  z-index:1000;
-}
-
-.logo-container {
-  display:flex; align-items:center; gap:10px;
-}
-
-.logo-text {
-  font-weight:bold;
-  font-size:1.8em;
-}
-
-.logo-text .verse {
-  color:white;
-}
-
-.logo-img {
-  width:40px; height:40px;
-  border-radius:50%;
-}
-
-#menu-toggle {
-  font-size:1.8em;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-
-/* MENU */
-#menu {
-  position: fixed;
-  top:0; left:-33%;
-  width:33%; height:100%;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  overflow-y: auto;
-  transition: left 0.3s ease;
-  z-index: 2000;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-}
-
-#menu.active {
-  left:0;
-}
-
-#menu .back-btn {
-  margin-bottom:20px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-#menu ul {
-  list-style:none; padding:0; margin:0;
-}
-
-#menu ul li {
-  padding:10px 5px;
-  cursor:pointer;
-  font-weight:bold;
-  transition: background 0.2s;
-}
-
-#menu ul li:hover {
-  background: rgba(0,0,0,0.1);
-}
-
-.submenu {
-  display:none;
-  padding-left:15px;
-}
-
-.submenu li {
-  font-weight:normal;
-}
-
-.submenu-parent.active .submenu {
-  display:block;
-}
-
-/* TOP NEWS */
-#top-news {
-  width:90%; max-width:1200px;
-  margin:120px auto 40px auto;
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-  gap:75px 20px;
-}
-
-.news-card {
-  position:relative;
-  cursor:pointer;
-  border-radius:15px;
-  overflow:hidden;
-  backdrop-filter: blur(10px);
-  transition: transform 0.2s;
-}
-
-.news-card:hover {
-  transform: translateY(-5px);
-}
-
-.news-card img {
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-
-.news-info {
-  position:absolute;
-  bottom:0; left:0; width:100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
-  color:#fff; padding:10px;
-}
-
-/* FOOTER */
-footer {
-  width:100%; background: linear-gradient(#0a1f44,#000033);
-  color:white;
-  font-weight:bold;
-}
-
-footer a {
-  color:white; text-decoration:none;
-}
-
-footer #footer-top {
-  display:flex; flex-wrap:wrap; justify-content:space-between;
-  padding:20px;
-}
-
-footer #footer-bottom {
-  text-align:center; padding:15px 0;
-}
-</style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="logo-container">
-    <span class="logo-text">Footy<span class="verse">Verse</span></span>
-    <img src="images/logo.jpg" alt="Logo" class="logo-img">
+  <div class="header-left">
+    <span class="logo-name"><span class="foot">Footy</span><span class="verse">Verse</span></span>
+    <img src="images/logo.jpg" alt="FootyVerse Logo" class="logo-img">
   </div>
-  <button id="menu-toggle">☰</button>
+  <div class="header-right">
+    <div id="menu-toggle">&#9776;</div>
+  </div>
 </header>
 
 <!-- MENU -->
-<div id="menu">
-  <span class="back-btn">← Back</span>
+<nav id="menu">
+  <div class="back-btn">← Back</div>
   <ul>
     <li data-page="index.html">Home</li>
     <li data-page="transfer.html">Transfer Updates</li>
@@ -193,128 +33,65 @@ footer #footer-bottom {
         <li data-page="bundesliga.html">Bundesliga</li>
         <li data-page="ligue1.html">Ligue 1</li>
         <li data-page="ucl.html">UEFA Champions League</li>
-        <li data-page="mls.html">MLS</li>
+        <li data-page="mls.html">Major League Soccer</li>
         <li data-page="saudi.html">Saudi Pro League</li>
       </ul>
     </li>
-    <li data-page="match-news.html">Match News</li>
-    <li data-page="player-compare.html">Player Comparison</li>
+    <li data-page="matchnews.html">Match News</li>
+    <li data-page="playercomparison.html">Player Comparison</li>
     <li data-page="shop.html">Shop</li>
   </ul>
-  <div style="margin-top:auto;">
+  <div class="menu-footer">
     <strong>Contact Us</strong>
-    <div style="display:flex; gap:5px; margin-top:5px;">
-      <a href="#"><img src="images/facebook.png" width="20"></a>
-      <a href="#"><img src="images/x.png" width="20"></a>
-      <a href="#"><img src="images/tiktok.png" width="20"></a>
+    <div class="social-icons">
+      <a href="#">FB</a>
+      <a href="#">X</a>
+      <a href="#">TikTok</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Instagram</a>
     </div>
-    <div style="display:flex; gap:5px; margin-top:5px;">
-      <a href="#"><img src="images/whatsapp.png" width="20"></a>
-      <a href="#"><img src="images/instagram.png" width="20"></a>
+    <div class="copyright">
+      &copy; 2026 FootyVerse Inc.
     </div>
   </div>
-  <div style="margin-top:10px; font-size:12px;">&copy; 2026 FootyVerse Inc.</div>
-</div>
+</nav>
 
-<!-- TOP NEWS -->
-<section id="top-news"></section>
+<!-- MAIN CONTENT -->
+<main id="top-news">
+  <!-- JS will populate 25 news cards here -->
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div id="footer-top">
-    <div>
+    <div id="faq">
       <h4>FAQ</h4>
       <ul>
-        <li><a href="#">How to use FootyVerse?</a></li>
-        <li><a href="#">Submit news?</a></li>
-        <li><a href="#">Report bugs?</a></li>
+        <li><a href="faq.html">How to use FootyVerse?</a></li>
+        <li><a href="faq.html">How to submit news?</a></li>
+        <li><a href="faq.html">How to report bugs?</a></li>
       </ul>
     </div>
-    <div>
+    <div id="privacy">
       <h4>Privacy Notice</h4>
-      <a href="#">Read privacy policy</a>
+      <a href="privacy.html">Read our privacy policy</a>
     </div>
-    <div>
-      <h4>Social Links</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">X</a></li>
-        <li><a href="#">TikTok</a></li>
-        <li><a href="#">WhatsApp</a></li>
-      </ul>
+    <div id="socials">
+      <h4>Connect with us</h4>
+      <div class="footer-socials">
+        <a href="https://instagram.com/footyverse" target="_blank">Instagram</a>
+        <a href="https://twitter.com/footyverse" target="_blank">X</a>
+        <a href="https://tiktok.com/@footyverse" target="_blank">TikTok</a>
+        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        <a href="https://t.me/footyverse" target="_blank">Telegram</a>
+      </div>
     </div>
   </div>
   <div id="footer-bottom">&copy; 2026 FootyVerse Inc.</div>
 </footer>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
-<script>
-const menu = document.getElementById('menu');
-const menuToggle = document.getElementById('menu-toggle');
-const backBtn = document.querySelector('#menu .back-btn');
 
-menuToggle.addEventListener('click', ()=> menu.classList.add('active'));
-backBtn.addEventListener('click', ()=> menu.classList.remove('active'));
-
-// Submenu toggle
-document.querySelectorAll('.submenu-parent').forEach(item=>{
-  item.addEventListener('click', ()=> item.classList.toggle('active'));
-});
-
-// Menu navigation
-document.querySelectorAll('#menu li[data-page]').forEach(item=>{
-  item.addEventListener('click', ()=>{
-    if(item.dataset.page !== window.location.pathname.split('/').pop())
-      window.location.href = item.dataset.page;
-    else
-      menu.classList.remove('active');
-  });
-});
-
-// Top news data
-const topNews = [
-  {title:"Ronaldo Hat-trick vs Al Hilal", img:"images/news1.jpg", page:"news1.html", author:"M. Dalhatu"},
-  {title:"Mbappé joins PSG dream team", img:"images/news2.jpg", page:"news2.html", author:"M. Dalhatu"},
-  {title:"Haaland scores 4 in EPL", img:"images/news3.jpg", page:"news3.html", author:"M. Dalhatu"},
-  {title:"Messi assists twice for Inter Miami", img:"images/news4.jpg", page:"news4.html", author:"M. Dalhatu"},
-  {title:"Man City wins FA Cup", img:"images/news5.jpg", page:"news5.html", author:"M. Dalhatu"},
-  {title:"Liverpool signs teenage prodigy", img:"images/news6.jpg", page:"news6.html", author:"M. Dalhatu"},
-  {title:"Chelsea under pressure after draw", img:"images/news7.jpg", page:"news7.html", author:"M. Dalhatu"},
-  {title:"Arsenal's comeback hero", img:"images/news8.jpg", page:"news8.html", author:"M. Dalhatu"},
-  {title:"Barcelona wins El Clasico", img:"images/news9.jpg", page:"news9.html", author:"M. Dalhatu"},
-  {title:"Real Madrid signs rising star", img:"images/news10.jpg", page:"news10.html", author:"M. Dalhatu"},
-  {title:"Serie A updates: AC Milan dominates", img:"images/news11.jpg", page:"news11.html", author:"M. Dalhatu"},
-  {title:"Bundesliga transfer rumors", img:"images/news12.jpg", page:"news12.html", author:"M. Dalhatu"},
-  {title:"Ligue 1: Monaco surprises PSG", img:"images/news13.jpg", page:"news13.html", author:"M. Dalhatu"},
-  {title:"MLS: LA Galaxy stuns rivals", img:"images/news14.jpg", page:"news14.html", author:"M. Dalhatu"},
-  {title:"Saudi Pro League: Al-Nassr signs star", img:"images/news15.jpg", page:"news15.html", author:"M. Dalhatu"},
-  {title:"EPL relegation battle heats up", img:"images/news16.jpg", page:"news16.html", author:"M. Dalhatu"},
-  {title:"Transfer gossip: top moves", img:"images/news17.jpg", page:"news17.html", author:"M. Dalhatu"},
-  {title:"UCL: PSG vs Bayern thriller", img:"images/news18.jpg", page:"news18.html", author:"M. Dalhatu"},
-  {title:"Player comparison: Haaland vs Ronaldo", img:"images/news19.jpg", page:"news19.html", author:"M. Dalhatu"},
-  {title:"New manager at Arsenal", img:"images/news20.jpg", page:"news20.html", author:"M. Dalhatu"},
-  {title:"MLS superstar makes debut", img:"images/news21.jpg", page:"news21.html", author:"M. Dalhatu"},
-  {title:"Bundesliga title race", img:"images/news22.jpg", page:"news22.html", author:"M. Dalhatu"},
-  {title:"La Liga: Sevilla shocks Real", img:"images/news23.jpg", page:"news23.html", author:"M. Dalhatu"},
-  {title:"Serie A: Napoli vs Juventus", img:"images/news24.jpg", page:"news24.html", author:"M. Dalhatu"},
-  {title:"EPL: Newcastle wins dramatic match", img:"images/news25.jpg", page:"news25.html", author:"M. Dalhatu"}
-];
-
-// Render top news
-const topNewsSection = document.getElementById('top-news');
-topNews.forEach(news=>{
-  const card = document.createElement('div');
-  card.className = "news-card";
-  card.innerHTML = `
-    <img src="${news.img}" alt="${news.title}">
-    <div class="news-info">
-      <h3>${news.title}</h3>
-      <span>Author: ${news.author}</span>
-    </div>
-  `;
-  card.onclick = ()=> window.location.href = news.page;
-  topNewsSection.appendChild(card);
-});
-</script>
 </body>
 </html>

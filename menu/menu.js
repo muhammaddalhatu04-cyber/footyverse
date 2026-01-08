@@ -1,74 +1,64 @@
-// Function to initialize menu after loading
-function initMenu() {
-  const hamburger = document.getElementById('hamburger');
+function initializeMenu() {
   const navMenu = document.getElementById('nav-menu');
-  const navItems = document.querySelectorAll('#nav-menu .nav-item');
-  const submenuParents = document.querySelectorAll('.submenu-parent');
-  const backBtn = document.getElementById('back-btn');
+  const hamburger = document.getElementById('menu-hamburger');
+  const backBtn = document.getElementById('menu-back');
+  const navItems = navMenu.querySelectorAll('.nav-item');
+  const submenuParents = navMenu.querySelectorAll('.submenu-parent');
 
-  // Show back button on non-home pages
-  if (!window.location.pathname.includes("index.html") && !window.location.pathname.endsWith("/")) {
-    backBtn.style.display = "block";
-  } else {
-    backBtn.style.display = "none";
-  }
-
-  // Hamburger toggle
-  hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (navMenu.style.left === "0px") {
-      navMenu.style.left = "-300px";
-    } else {
-      navMenu.style.left = "0px";
-    }
+  // OPEN MENU
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.add('active');
+    backBtn.style.display = 'none';
+    navMenu.querySelectorAll('.submenu').forEach(sm => sm.style.display = 'none');
   });
 
-  // Back button click
+  // BACK BUTTON CLOSES MENU
   backBtn.addEventListener('click', () => {
-    window.history.back();
+    navMenu.classList.remove('active');
   });
 
-  // Submenu toggle for Match Updates
+  // SUBMENU TOGGLE FOR "Match Updates"
   submenuParents.forEach(parent => {
-    parent.addEventListener('click', (e) => {
-      e.stopPropagation();
+    parent.addEventListener('click', e => {
+      e.stopPropagation(); // prevent parent click
       const submenu = parent.querySelector('.submenu');
-      if(submenu.style.display === "block") {
-        submenu.style.display = "none";
-      } else {
-        submenu.style.display = "block";
-      }
+      const isVisible = submenu.style.display === 'block';
+      // close all other submenus
+      navMenu.querySelectorAll('.submenu').forEach(sm => sm.style.display = 'none');
+      // toggle this submenu
+      submenu.style.display = isVisible ? 'none' : 'block';
     });
   });
 
-  // Page navigation
+  // MAIN NAV ITEM CLICK
   navItems.forEach(item => {
-    item.addEventListener('click', (e) => {
+    item.addEventListener('click', e => {
       e.stopPropagation();
       const page = item.getAttribute('data-page');
-      if(page) window.location.href = `${page}.html`;
+      if (item.classList.contains('submenu-parent')) return; // parent does not redirect
+      if (page) window.location.href = page;
+
+      // Highlight active
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
     });
   });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && e.target !== hamburger) {
-      navMenu.style.left = "-300px";
-      submenuParents.forEach(parent => {
-        const submenu = parent.querySelector('.submenu');
-        submenu.style.display = "none";
-      });
-    }
+  // SUBMENU ITEM CLICK
+  const submenuItems = navMenu.querySelectorAll('.submenu-item');
+  submenuItems.forEach(sub => {
+    sub.addEventListener('click', e => {
+      e.stopPropagation();
+      const page = sub.getAttribute('data-page');
+      if (page) window.location.href = page;
+    });
   });
 }
 
-// Load menu.html and initialize AFTER it’s in DOM
-document.addEventListener("DOMContentLoaded", () => {
-  fetch('menu/menu.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('menu-placeholder').innerHTML = data;
-      initMenu(); // attach event listeners AFTER menu is added
-    })
-    .catch(err => console.error("Menu failed to load:", err));
-});
+// ===== LOAD MENU AND INITIALIZE =====
+fetch('menu/menu.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('menu-placeholder').innerHTML = data;
+    initializeMenu(); // run after menu is in DOM
+  });

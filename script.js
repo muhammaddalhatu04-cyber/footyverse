@@ -9,7 +9,7 @@ hamburger.addEventListener('click', () => {
 const topNews = [
   {
     title:"Ronaldo Hat-Trick vs Al Hilal",
-    img:"images/ronaldo-hat-trick.jpg",
+    img:"images/ronaldo-hat-trick.JPG",
     writer:"John Doe",
     link:"news/ronaldo-hat-trick.html"
   },

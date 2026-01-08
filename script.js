@@ -1,91 +1,79 @@
-// ===== ELEMENTS =====
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const menuBack = document.getElementById('menuBack');
-const matchUpdates = document.getElementById('matchUpdates');
-const matchLeagues = document.getElementById('matchLeagues');
-const submenuBack = document.getElementById('submenuBack');
-const navItems = document.querySelectorAll('.nav-item, .submenu-item');
-const newsSection = document.getElementById('top-news');
+const menuToggle = document.getElementById("menuToggle");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+const closeMenu = document.getElementById("closeMenu");
 
-// ===== TOP NEWS DATA =====
+const navItems = document.querySelectorAll(".nav-item");
+const submenuParents = document.querySelectorAll(".submenu-parent");
+const submenuItems = document.querySelectorAll(".submenu-item");
+
 const topNews = [
-  { title: "Ronaldo Hat-Trick vs Al Hilal", img: "images/ronaldo.jpg", writer: "John Doe", link: "ronaldo.html" },
-  { title: "Mbappé Scores Winning Goal", img: "images/mbappe.jpg", writer: "Jane Smith", link: "mbappe.html" },
-  { title: "Messi Leads PSG to Victory", img: "images/messi.jpg", writer: "Alex Brown", link: "messi.html" }
-  
-// ===== FUNCTION TO RENDER TOP NEWS =====
-function renderNews(newsArray) {
-  newsSection.innerHTML = ""; // Clear existing news
-  newsArray.forEach(news => {
-    const card = document.createElement('div');
-    card.classList.add('news-card');
-    card.innerHTML = `
-      <a href="${news.link}">
-        <img src="${news.img}" alt="${news.title}">
-        <h3>${news.title}</h3>
-        <p>By ${news.writer}</p>
-      </a>
+  {
+    title: "Mbappé agrees shocking move",
+    image: "images/mbappe-transfer.jpg",
+    author: "FootyVerse"
+  },
+  {
+    title: "Ronaldo scores hat-trick",
+    image: "images/ronaldo-transfer.jpg",
+    author: "FootyVerse"
+  }
+];
+
+// MENU OPEN / CLOSE
+menuToggle.onclick = () => {
+  sideMenu.classList.add("active");
+  overlay.classList.add("active");
+};
+
+closeMenu.onclick = closeAllMenus;
+overlay.onclick = closeAllMenus;
+
+function closeAllMenus() {
+  sideMenu.classList.remove("active");
+  overlay.classList.remove("active");
+  submenuParents.forEach(p => p.classList.remove("open"));
+}
+
+// SUBMENU TOGGLE
+submenuParents.forEach(parent => {
+  parent.addEventListener("click", () => {
+    parent.classList.toggle("open");
+  });
+});
+
+// NAV ITEM CLICK
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const page = item.dataset.page;
+    if (page) window.location.href = `${page}.html`;
+  });
+});
+
+// SUBMENU ITEM CLICK
+submenuItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const page = item.dataset.page;
+    window.location.href = `${page}.html`;
+  });
+});
+
+// RENDER HOME NEWS
+function renderNews() {
+  const container = document.getElementById("top-news");
+  container.innerHTML = "";
+
+  topNews.forEach(n => {
+    container.innerHTML += `
+      <div class="news-card">
+        <img src="${n.image}">
+        <div class="news-info">
+          <h3>${n.title}</h3>
+          <span>By ${n.author}</span>
+        </div>
+      </div>
     `;
-    newsSection.appendChild(card);
   });
 }
 
-// Initial render of home news
-renderNews(topNews);
-
-// ===== HAMBURGER MENU =====
-hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-});
-
-// Full menu back button
-menuBack.addEventListener('click', () => {
-  navMenu.classList.remove('active');
-});
-
-// ===== MATCH UPDATES SUBMENU =====
-// Only toggle the submenu; no redirect
-matchUpdates.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent closing menu
-  matchUpdates.classList.toggle('active');
-  matchLeagues.style.display = matchUpdates.classList.contains('active') ? 'flex' : 'none';
-});
-
-// Submenu back button
-submenuBack.addEventListener('click', (e) => {
-  e.stopPropagation();
-  matchUpdates.classList.remove('active');
-  matchLeagues.style.display = 'none';
-});
-
-// ===== MENU ITEM CLICK =====
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const page = item.getAttribute('data-page');
-
-    // Close full menu only if it’s a main page, not submenu toggle
-    if (!item.classList.contains('submenu-parent')) {
-      navMenu.classList.remove('active');
-    }
-
-    // Remove active highlight from all
-    navItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-
-    // Home dynamically reloads top news
-    if (page === "home") {
-      renderNews(topNews);
-    }
-
-    // League pages redirect
-    else if (item.classList.contains('submenu-item') && page) {
-      window.location.href = `${page}.html`;
-    }
-
-    // Other pages
-    else if (page) {
-      window.location.href = `${page}.html`;
-    }
-  });
-});
+renderNews();

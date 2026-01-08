@@ -17,15 +17,20 @@
 
   <div class="hamburger" id="hamburger">&#9776;</div>
 
+  <!-- ===== NAVIGATION MENU ===== -->
   <nav class="nav" id="navMenu">
     <ul>
+      <!-- BACK BUTTON -->
+      <li class="nav-back" id="menuBack">&larr; Back</li>
+
       <li class="nav-item" data-page="home">Home</li>
       <li class="nav-item" data-page="transfer-news">Transfer News</li>
 
       <!-- MATCH UPDATES WITH SUBMENU -->
-      <li class="nav-item submenu-parent">
+      <li class="nav-item submenu-parent" id="matchUpdates">
         Match Updates
-        <ul class="submenu">
+        <ul class="submenu" id="matchLeagues">
+          <li class="submenu-back" id="submenuBack">&larr; Back</li>
           <li class="submenu-item" data-page="epl">EPL</li>
           <li class="submenu-item" data-page="la-liga">La Liga</li>
           <li class="submenu-item" data-page="serie-a">Serie A</li>
@@ -55,7 +60,7 @@
 
 <!-- ===== TOP NEWS ===== -->
 <section class="top-news" id="top-news">
-  <!-- News cards will be dynamically inserted here by JS -->
+  <!-- News cards are dynamically loaded via JS -->
 </section>
 
 <!-- ===== FOOTER ===== -->

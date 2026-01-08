@@ -1,91 +1,41 @@
-/* Header */
-#menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background: #0a1f44; /* navy dark blue */
-  color: #fff;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1001;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-}
-
-/* Logo */
-#logo {
-  font-size: 1.3rem;
-}
-
-/* Hamburger */
-#hamburger {
-  cursor: pointer;
-  font-size: 1.6rem;
-  transition: transform 0.3s;
-}
-#hamburger:hover {
-  transform: rotate(90deg);
-}
-
-/* Back Button */
-#back-btn {
-  display: none;
-  position: fixed;
-  top: 70px;
-  left: 10px;
-  z-index: 1002;
-  padding: 6px 12px;
-  background: #0a1f44;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: background 0.2s, transform 0.2s;
-}
-#back-btn:hover {
-  background: #081a35;
-  transform: scale(1.05);
-}
-
-/* Nav Menu */
-#nav-menu {
-  position: fixed;
-  top: 0;
-  left: -300px;
-  width: 260px;
-  height: 100%;
-  background: rgba(255,255,255,0.95); /* opaque liquid glass */
-  color: #0a1f44;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.25);
-  transition: left 0.3s ease;
-  padding-top: 60px;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-/* Nav Items */
-#nav-menu ul { list-style: none; margin:0; padding:0; }
-#nav-menu .nav-item {
-  padding: 12px 20px;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  transition: background 0.2s;
-}
-#nav-menu .nav-item:hover { background: rgba(10,31,68,0.1); }
-#nav-menu .nav-item.active { background: #0a1f44; color: #fff; }
-
-/* Submenu */
-.submenu { display: none; list-style: none; padding-left: 15px; }
-.submenu-item {
-  padding: 10px 20px;
-  font-weight: normal;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.submenu-item:hover { background: rgba(10,31,68,0.1); }
+<div id="menu" class="menu-closed">
+  <div id="menu-header">
+    <button id="menu-back">← Back</button>
+  </div>
+  <ul id="menu-list">
+    <li class="menu-item" data-page="index.html">Home</li>
+    <li class="menu-item" data-page="transfer.html">Transfer Updates</li>
+    <li class="menu-item submenu-parent">Match Updates
+      <ul class="submenu">
+        <li class="submenu-item" data-page="epl.html">EPL</li>
+        <li class="submenu-item" data-page="laliga.html">La Liga</li>
+        <li class="submenu-item" data-page="seriea.html">Serie A</li>
+        <li class="submenu-item" data-page="bundesliga.html">Bundesliga</li>
+        <li class="submenu-item" data-page="ligue1.html">Ligue 1</li>
+        <li class="submenu-item" data-page="ucl.html">UEFA Champions League</li>
+        <li class="submenu-item" data-page="mls.html">Major League Soccer</li>
+        <li class="submenu-item" data-page="saudi.html">Saudi Pro League</li>
+      </ul>
+    </li>
+    <li class="menu-item" data-page="matchnews.html">Match News</li>
+    <li class="menu-item" data-page="playercomparison.html">Player Comparison</li>
+    <li class="menu-item" data-page="shop.html">Shop</li>
+  </ul>
+  <div id="menu-footer">
+    <strong>Contact Us</strong>
+    <div id="menu-socials">
+      <div class="social-row">
+        <img src="images/facebook.png" alt="Facebook">
+        <img src="images/x.png" alt="X">
+        <img src="images/tiktok.png" alt="TikTok">
+      </div>
+      <div class="social-row">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+        <img src="images/instagram.png" alt="Instagram">
+      </div>
+    </div>
+    <div id="menu-copyright">
+      &copy; 2026 FootyVerse Inc.
+    </div>
+  </div>
+</div>

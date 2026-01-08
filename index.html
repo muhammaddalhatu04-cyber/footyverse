@@ -1,69 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FootyVerse</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <button class="hamburger" id="menuToggle">☰</button>
-    <img src="images/logo.png" alt="FootyVerse Logo" class="logo" />
-  </header>
+  <!-- ===== MENU PLACEHOLDER ===== -->
+  <div id="menu.html"></div>
 
-  <!-- SLIDE MENU -->
-  <nav class="side-menu" id="sideMenu">
-    <div class="menu-header">
-      <button class="back-btn" id="closeMenu">←</button>
-      <span>Menu</span>
-    </div>
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero">
+    <!-- Hero news card rendered dynamically -->
+  </section>
 
-    <ul class="menu-list">
-      <li class="nav-item active" data-page="home">Home</li>
+  <!-- ===== TOP NEWS ===== -->
+  <section id="top-news">
+    <!-- Top 25 news cards rendered dynamically -->
+  </section>
 
-      <li class="nav-item" data-page="transfer-news">
-        Transfer News & Rumors
-      </li>
-
-      <li class="nav-item submenu-parent">
-        Match Updates
-        <ul class="submenu">
-          <li class="submenu-item" data-page="epl">EPL</li>
-          <li class="submenu-item" data-page="la-liga">La Liga</li>
-          <li class="submenu-item" data-page="serie-a">Serie A</li>
-          <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
-          <li class="submenu-item" data-page="ligue-one">Ligue 1</li>
-          <li class="submenu-item" data-page="champions-league">Champions League</li>
-          <li class="submenu-item" data-page="mls">MLS</li>
-          <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
-        </ul>
-      </li>
-
-      <li class="nav-item" data-page="match-news">Match News</li>
-      <li class="nav-item" data-page="comparison">Player Comparison</li>
-      <li class="nav-item" data-page="shop">Shop</li>
-      <li class="nav-item" data-page="contact">Contact Us</li>
-    </ul>
-  </nav>
-
-  <!-- OVERLAY -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- MAIN CONTENT -->
-  <main class="content">
-    <section id="top-news" class="news-grid">
-      <!-- JS injects top news here -->
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 FootyVerse Inc.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    &copy; 2026 FootyVerse Inc.
   </footer>
 
+  <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
+  <script>
+    // Load universal menu
+    fetch('menu.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('menu-placeholder').innerHTML = data;
+        initMenu(); // Initialize menu after loading
+      });
+  </script>
+
 </body>
 </html>

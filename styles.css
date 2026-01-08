@@ -1,1 +1,31 @@
+/* Reset & Base */
+ {margin:0;padding:0;box-sizing:border-box;}
+body {font-family: 'Arial', sans-serif;background:#f4f4f4;color:#222;}
+a {text-decoration:none;color:inherit;}
 
+/* Header */
+.header {display:flex;align-items:center;justify-content:space-between;background:#111;padding:15px;position:relative;color:#fff;}
+.header .logo {font-size:1.8rem;font-weight:bold;}
+.hamburger {font-size:2rem;cursor:pointer;display:block;}
+.nav ul {list-style:none;display:flex;gap:15px;}
+.nav ul li {position:relative;}
+.nav ul li a {padding:10px;}
+.nav ul li a.active {background:#e50914;border-radius:4px;}
+
+/* Sub-menu */
+.submenu .sub-menu {display:none;position:absolute;top:40px;left:0;background:#222;flex-direction:column;min-width:180px;border-radius:4px;}
+.submenu:hover .sub-menu {display:flex;}
+.submenu .sub-menu li a {padding:10px;color:#fff;}
+
+/* Top News Section */
+.top-news {padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;background:#eee;}
+.news-card {background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.news-card img {width:100%;display:block;}
+.news-card h3 {padding:10px;font-size:1.1rem;}
+.news-card p {padding:0 10px 10px;font-size:0.9rem;color:#555;}
+.news-card:hover {transform:scale(1.02);transition:0.3s;}
+
+/* Footer */
+footer {background:#111;color:#fff;padding:20px;text-align:center;}
+footer .faq,h3 {margin-bottom:10px;}
+footer .ads,p {margin:10px 0;}

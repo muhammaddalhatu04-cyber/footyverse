@@ -7,8 +7,8 @@
 }
 
 body {
-  background: #f7f7f7;
-  color: #222;
+  background: #121212; /* dark background for classy feel */
+  color: #fff;
 }
 
 /* ===== HEADER ===== */
@@ -16,13 +16,14 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #0a0f2c; /* dark navy */
+  background: rgba(10,15,44,0.95); /* glass effect */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
 }
 
 .header .logo {
@@ -57,7 +58,7 @@ body {
 .nav ul li {
   cursor: pointer;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: all 0.3s ease;
   color: #fff;
 }
@@ -80,15 +81,28 @@ body {
 
 .hero-card {
   position: relative;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
 .hero-card img {
   width: 100%;
-  height: auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(0,255,127,0.15), rgba(0,255,127,0.05), rgba(0,255,127,0.15));
+  transform: rotate(0deg);
+  animation: moveGradient 8s linear infinite;
+  pointer-events: none;
 }
 
 .hero-text {
@@ -97,8 +111,10 @@ body {
   left: 20px;
   color: #fff;
   background: rgba(10,15,44,0.6);
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* ===== TOP NEWS CARDS ===== */
@@ -110,43 +126,71 @@ body {
 }
 
 .news-card {
-  background: #fff;
-  border-radius: 12px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.news-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(0,255,127,0.2), rgba(0,255,127,0.05), rgba(0,255,127,0.2));
+  transform: rotate(0deg);
+  animation: moveGradient 6s linear infinite;
+  pointer-events: none;
 }
 
 .news-card img {
   width: 100%;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .news-card h3 {
-  padding: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  padding: 12px 10px 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .news-card p {
-  padding: 0 10px 10px;
-  font-size: 0.9rem;
-  color: #555;
+  padding: 0 10px 12px;
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.news-card:hover img {
+  transform: scale(1.03);
 }
 
 /* ===== FOOTER ===== */
 .footer {
   padding: 20px;
-  background: #0a0f2c;
+  background: rgba(10,15,44,0.95);
   color: #fff;
   text-align: center;
   margin-top: 40px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
 }
 
 .footer-links a {
@@ -157,6 +201,13 @@ body {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes moveGradient {
+  0% { transform: rotate(0deg) translate(0,0); }
+  50% { transform: rotate(180deg) translate(10px,10px); }
+  100% { transform: rotate(360deg) translate(0,0); }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -170,10 +221,12 @@ body {
     right: -250px;
     width: 250px;
     height: 100%;
-    background: #0a0f2c;
+    background: rgba(10,15,44,0.95);
     flex-direction: column;
     padding-top: 60px;
     transition: right 0.3s ease;
+    backdrop-filter: blur(8px);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.4);
   }
   .nav ul {
     flex-direction: column;

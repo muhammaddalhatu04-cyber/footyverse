@@ -1,123 +1,189 @@
-/* --- GLOBAL --- */
+/* =================== GLOBAL =================== */
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(120deg, #fff, #cce7ff, #ffe6f0, #e0ccff);
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-  overflow-x: hidden;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f0ff, #dff7ff, #ffe4f5, #e0f0ff);
+    background-size: 400% 400%;
+    animation: gradientBG 30s ease infinite;
+    overflow-x: hidden;
 }
 
-@keyframes gradientShift {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+/* Gradient background animation */
+@keyframes gradientBG {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
-/* --- HEADER --- */
-#header {
-  position: fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background: rgba(255,192,203,0.8);
-  backdrop-filter: blur(15px);
-  padding:10px 20px;
-  z-index: 1000;
+/* =================== HEADER =================== */
+header {
+    position: fixed;
+    top: 0; left:0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 20px;
+    background: rgba(255,182,193,0.5); /* light pink liquid glass */
+    backdrop-filter: blur(15px);
+    z-index: 1000;
 }
 
-#logo-name {
-  display:flex;
-  align-items:center;
-  gap:10px;
+.logo-container {
+    display: flex; align-items: center; gap: 10px;
 }
 
-#footy {
-  font-weight:bold;
-  color: black;
-  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+.logo-text {
+    font-weight: bold;
+    font-size: 1.8em;
+    background: rgba(255,255,255,0.3);
+    padding: 0 5px;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
 }
 
-#verse {
-  font-weight:bold;
-  color:white;
-  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+.logo-text .verse {
+    color: white;
 }
 
-#logo-img {
-  width:50px;
-  height:50px;
+.logo-img {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-#hamburger-menu {
-  font-size:28px;
-  cursor:pointer;
-  font-weight:bold;
-  color:black;
+#menu-toggle {
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    backdrop-filter: blur(10px);
 }
 
-/* --- TOP NEWS --- */
+/* =================== MENU =================== */
+#menu {
+    position: fixed;
+    top: 0; left: -33%;
+    width: 33%;
+    height: 100%;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(15px);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#menu.active { left:0; }
+
+#menu .back-btn {
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu ul li {
+    padding: 10px 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#menu ul li:hover {
+    background: rgba(0,0,0,0.1);
+    transform: translateX(3px);
+}
+
+.submenu {
+    display: none;
+    padding-left: 15px;
+}
+
+.submenu li {
+    font-weight: normal;
+}
+
+.submenu-parent.active .submenu { display:block; }
+
+/* Fixed Contact Us at bottom */
+#menu > div {
+    margin-top:auto;
+}
+
+/* =================== TOP NEWS =================== */
 #top-news {
-  margin-top:80px;
-  width:90%;
-  max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
-  display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
-  gap:75px;
-  padding-bottom:50px;
+    width: 90%; max-width: 1200px;
+    margin: 120px auto 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap: 75px 20px;
 }
 
 .news-card {
-  position: relative;
-  border-radius:15px;
-  overflow:hidden;
-  cursor:pointer;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(15px);
-  transition: transform 0.3s;
+    position: relative;
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s;
+    background: rgba(255,255,255,0.4); /* Liquid glass default */
 }
 
-.news-card:hover {
-  transform: scale(1.02);
-}
+.news-card:hover { transform: translateY(-5px); }
 
 .news-card img {
-  width:100%;
-  height:200px;
-  object-fit:cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .news-info {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%);
-  color:#fff;
-  padding:10px;
-  box-sizing:border-box;
+    position: absolute;
+    bottom:0; left:0; width:100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+    color: #fff;
+    padding: 10px;
+    height: 40%;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-/* --- FOOTER --- */
-#footer {
-  margin-top:50px;
-  color:#000;
-  background: linear-gradient(to bottom, rgba(200,200,255,0.8), #00008b);
-  padding:20px 0;
+.news-info h3 {
+    margin:0;
+    font-size:1em;
+    font-weight:bold;
 }
 
-#footer-top {
-  display:flex;
-  justify-content:space-around;
-  flex-wrap:wrap;
-  gap:15px;
+.news-info span {
+    font-size:0.8em;
 }
 
-#footer-bottom {
-  text-align:center;
-  font-weight:bold;
-  padding:15px 0;
+/* =================== FOOTER =================== */
+footer {
+    width: 100%;
+    background: linear-gradient(#0a1f44,#000033);
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+footer a { color:white; text-decoration:none; }
+
+footer #footer-top {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    padding:20px;
+}
+
+footer #footer-bottom {
+    text-align:center; padding:15px 0;
 }

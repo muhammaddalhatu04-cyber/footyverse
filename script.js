@@ -1,29 +1,44 @@
-// Hamburger toggle
+// ===== MENU TOGGLE =====
 const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
+const navMenu = document.getElementById('navMenu');
+
 hamburger.addEventListener('click', () => {
-  nav.classList.toggle('open');
+  navMenu.classList.toggle('active');
 });
 
-// Load top news dynamically
+// ===== DYNAMIC MENU HIGHLIGHT =====
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// ===== TOP NEWS DYNAMIC LOADING =====
 const topNews = [
   {
-    title:"Ronaldo Hat-Trick vs Al Hilal",
-    img:"images/ronaldo-hat-trick.JPG",
-    writer:"John Doe",
-    link:"news/ronaldo-hat-trick.html"
+    title: "Ronaldo Hat-Trick vs Al Hilal",
+    img: "images/ronaldo-hat-trick.jpg",
+    writer: "John Doe",
+    link: "#"
   },
   {
-    title:"Mbappé Scores Winning Goal",
-    img:"images/mbappe-goal.jpg",
-    writer:"Jane Smith",
-    link:"news/mbappe-goal.html"
+    title: "Mbappé Scores Winning Goal",
+    img: "images/mbappe-goal.jpg",
+    writer: "Jane Smith",
+    link: "#"
   },
-  // Add more news objects dynamically here...
+  {
+    title: "Messi Leads PSG to Victory",
+    img: "images/messi-victory.jpg",
+    writer: "Alex Brown",
+    link: "#"
+  }
+  // Add more news objects here dynamically
 ];
 
 const newsSection = document.getElementById('top-news');
-
 topNews.forEach(news => {
   const card = document.createElement('div');
   card.classList.add('news-card');

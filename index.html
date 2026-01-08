@@ -8,54 +8,68 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="logo">
-      <img src="images/logo.jpg" alt="FootyVerse Logo">
-      <span>FootyVerse</span>
-    </div>
-    <div class="hamburger" id="hamburger">
-      &#9776;
-    </div>
-    <nav class="nav" id="navMenu">
-      <ul>
-        <li class="nav-item active" data-section="home">Home</li>
-        <li class="nav-item" data-section="transfer-news">Transfer News</li>
-        <li class="nav-item" data-section="match-updates">Match Updates</li>
-        <li class="nav-item" data-section="match-news">Match News</li>
-        <li class="nav-item" data-section="player-comparison">Player Comparison</li>
-        <li class="nav-item" data-section="shop">Shop</li>
-        <li class="nav-item" data-section="contact-us">Contact Us</li>
-      </ul>
-    </nav>
-  </header>
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="logo">
+    <img src="images/logo.png" alt="FootyVerse Logo">
+    <span>FootyVerse</span>
+  </div>
 
-  <!-- ===== TOP NEWS HERO ===== -->
-  <section class="top-hero" id="top-hero">
-    <div class="hero-card">
-      <img src="images/ronaldo-hat-trick.jpg" alt="Featured News">
-      <div class="hero-text">
-        <h1>Ronaldo Hat-Trick vs Al Hilal</h1>
-        <p>By Mubeen</p>
-      </div>
-    </div>
-  </section>
+  <div class="hamburger" id="hamburger">&#9776;</div>
 
-  <!-- ===== TOP NEWS LIST ===== -->
-  <section class="top-news" id="top-news">
-    <!-- News cards will be dynamically inserted here by script.js -->
-  </section>
+  <nav class="nav" id="navMenu">
+    <ul>
+      <li class="nav-item" data-page="home">Home</li>
+      <li class="nav-item" data-page="transfer-news">Transfer News</li>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="#">FAQ</a>
-      <a href="#">Privacy Notice</a>
-      <a href="#">Advertise</a>
-    </div>
-    <p>&copy; 2026 FootyVerse Inc</p>
-  </footer>
+      <!-- MATCH UPDATES WITH SUBMENU -->
+      <li class="nav-item submenu-parent">
+        Match Updates
+        <ul class="submenu">
+          <li class="submenu-item" data-page="epl">EPL</li>
+          <li class="submenu-item" data-page="la-liga">La Liga</li>
+          <li class="submenu-item" data-page="serie-a">Serie A</li>
+          <li class="submenu-item" data-page="bundesliga">Bundesliga</li>
+          <li class="submenu-item" data-page="ligue-one">Ligue One</li>
+          <li class="submenu-item" data-page="mls">MLS</li>
+          <li class="submenu-item" data-page="saudi-pro-league">Saudi Pro League</li>
+          <li class="submenu-item" data-page="champions-league">Champions League</li>
+        </ul>
+      </li>
 
-  <script src="script.js"></script>
+      <li class="nav-item" data-page="match-news">Match News</li>
+      <li class="nav-item" data-page="player-comparison">Player Comparison</li>
+      <li class="nav-item" data-page="shop">Shop</li>
+      <li class="nav-item" data-page="contact-us">Contact Us</li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="top-hero">
+  <div class="hero-card">
+    <img src="images/hero-top-news.jpg" alt="Top News">
+    <div class="hero-text">Biggest Football Headlines Today</div>
+  </div>
+</section>
+
+<!-- ===== TOP NEWS ===== -->
+<section class="top-news" id="top-news">
+  <!-- News cards will be dynamically inserted here by JS -->
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://twitter.com" target="_blank">Twitter</a>
+    <a href="https://tiktok.com" target="_blank">TikTok</a>
+    <a href="https://t.me" target="_blank">Telegram</a>
+    <a href="https://wa.me/your-number" target="_blank">WhatsApp</a>
+  </div>
+  <p>&copy; 2026 FootyVerse Inc</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

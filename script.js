@@ -2,7 +2,6 @@
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
-// Open/close menu when hamburger clicked
 hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
@@ -11,29 +10,33 @@ hamburger.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
   if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
     navMenu.classList.remove('active');
+    document.querySelectorAll('.submenu-parent').forEach(parent => parent.classList.remove('active'));
   }
 });
 
-// Swipe to close menu on mobile
-let startX = 0;
-navMenu.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
+// Submenu toggle on mobile
+const submenuParents = document.querySelectorAll('.submenu-parent');
+
+submenuParents.forEach(parent => {
+  parent.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      e.stopPropagation();
+      parent.classList.toggle('active');
+    }
+  });
 });
 
-navMenu.addEventListener('touchmove', e => {
-  const moveX = e.touches[0].clientX;
-  if (startX - moveX > 50) { // swipe left
-    navMenu.classList.remove('active');
-  }
-});
+// Menu item click
+const navItems = document.querySelectorAll('.nav-item, .submenu-item');
 
-// ===== DYNAMIC MENU HIGHLIGHT =====
-const navItems = document.querySelectorAll('.nav-item');
 navItems.forEach(item => {
   item.addEventListener('click', () => {
-    navItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    navMenu.classList.remove('active'); // close menu on mobile after click
+    const page = item.getAttribute('data-page');
+    if (page) {
+      window.location.href = `${page}.html`;
+    }
+    navMenu.classList.remove('active');
+    document.querySelectorAll('.submenu-parent').forEach(parent => parent.classList.remove('active'));
   });
 });
 
@@ -57,15 +60,14 @@ let topNews = [
     writer: "Alex Brown",
     link: "messi-victory.html"
   }
-  // Add more news objects here
 ];
 
-// ===== RENDER NEWS CARDS =====
+// ===== RENDER NEWS =====
 const newsSection = document.getElementById('top-news');
 
 function renderNews() {
-  newsSection.innerHTML = ""; // clear old content
-  topNews.forEach((news, index) => {
+  newsSection.innerHTML = "";
+  topNews.forEach((news) => {
     const card = document.createElement('div');
     card.classList.add('news-card');
     card.innerHTML = `
@@ -74,22 +76,9 @@ function renderNews() {
         <h3>${news.title}</h3>
         <p>By ${news.writer}</p>
       </a>
-      <button class="delete-btn" data-index="${index}">&times;</button>
     `;
     newsSection.appendChild(card);
   });
-
-  // Add delete functionality
-  const deleteBtns = document.querySelectorAll('.delete-btn');
-  deleteBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const idx = e.target.getAttribute('data-index');
-      topNews.splice(idx, 1); // remove news from array
-      renderNews(); // re-render
-    });
-  });
 }
 
-// Initial render
 renderNews();

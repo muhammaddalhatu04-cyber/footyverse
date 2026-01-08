@@ -1,3 +1,4 @@
+// Function to initialize menu after loading
 function initMenu() {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
@@ -12,28 +13,38 @@ function initMenu() {
     backBtn.style.display = "none";
   }
 
+  // Hamburger toggle
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (navMenu.style.left === "0px") {
+      navMenu.style.left = "-300px";
+    } else {
+      navMenu.style.left = "0px";
+    }
+  });
+
   // Back button click
   backBtn.addEventListener('click', () => {
     window.history.back();
   });
 
-  // Hamburger toggle
-  hamburger.addEventListener('click', () => {
-    navMenu.style.left = (navMenu.style.left === "0px") ? "-300px" : "0px";
-  });
-
-  // Submenu toggle
+  // Submenu toggle for Match Updates
   submenuParents.forEach(parent => {
     parent.addEventListener('click', (e) => {
       e.stopPropagation();
       const submenu = parent.querySelector('.submenu');
-      submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+      if(submenu.style.display === "block") {
+        submenu.style.display = "none";
+      } else {
+        submenu.style.display = "block";
+      }
     });
   });
 
   // Page navigation
   navItems.forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
       const page = item.getAttribute('data-page');
       if(page) window.location.href = `${page}.html`;
     });
@@ -41,7 +52,7 @@ function initMenu() {
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if(!navMenu.contains(e.target) && e.target !== hamburger) {
+    if (!navMenu.contains(e.target) && e.target !== hamburger) {
       navMenu.style.left = "-300px";
       submenuParents.forEach(parent => {
         const submenu = parent.querySelector('.submenu');
@@ -51,10 +62,13 @@ function initMenu() {
   });
 }
 
-// Load menu dynamically and initialize
-fetch('menu/menu.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('menu-placeholder').innerHTML = data;
-    initMenu(); // Attach all listeners AFTER loading menu
-  });
+// Load menu.html and initialize AFTER it’s in DOM
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('menu/menu.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+      initMenu(); // attach event listeners AFTER menu is added
+    })
+    .catch(err => console.error("Menu failed to load:", err));
+});

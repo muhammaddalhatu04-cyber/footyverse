@@ -1,41 +1,84 @@
-<div id="menu" class="menu-closed">
-  <div id="menu-header">
-    <button id="menu-back">← Back</button>
-  </div>
-  <ul id="menu-list">
-    <li class="menu-item" data-page="index.html">Home</li>
-    <li class="menu-item" data-page="transfer.html">Transfer Updates</li>
-    <li class="menu-item submenu-parent">Match Updates
-      <ul class="submenu">
-        <li class="submenu-item" data-page="epl.html">EPL</li>
-        <li class="submenu-item" data-page="laliga.html">La Liga</li>
-        <li class="submenu-item" data-page="seriea.html">Serie A</li>
-        <li class="submenu-item" data-page="bundesliga.html">Bundesliga</li>
-        <li class="submenu-item" data-page="ligue1.html">Ligue 1</li>
-        <li class="submenu-item" data-page="ucl.html">UEFA Champions League</li>
-        <li class="submenu-item" data-page="mls.html">Major League Soccer</li>
-        <li class="submenu-item" data-page="saudi.html">Saudi Pro League</li>
-      </ul>
-    </li>
-    <li class="menu-item" data-page="matchnews.html">Match News</li>
-    <li class="menu-item" data-page="playercomparison.html">Player Comparison</li>
-    <li class="menu-item" data-page="shop.html">Shop</li>
-  </ul>
-  <div id="menu-footer">
-    <strong>Contact Us</strong>
-    <div id="menu-socials">
-      <div class="social-row">
-        <img src="images/facebook.png" alt="Facebook">
-        <img src="images/x.png" alt="X">
-        <img src="images/tiktok.png" alt="TikTok">
-      </div>
-      <div class="social-row">
-        <img src="images/whatsapp.png" alt="WhatsApp">
-        <img src="images/instagram.png" alt="Instagram">
-      </div>
-    </div>
-    <div id="menu-copyright">
-      &copy; 2026 FootyVerse Inc.
-    </div>
-  </div>
-</div>
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 33%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(15px);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+}
+
+.menu-open { transform: translateX(0); }
+.menu-closed { transform: translateX(-100%); }
+
+#menu-header {
+  padding: 10px;
+}
+
+#menu-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#menu-list {
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.menu-item {
+  padding: 15px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.menu-item:hover { background: rgba(0,0,0,0.1); }
+
+.submenu {
+  list-style: none;
+  padding-left: 20px;
+  display: none;
+}
+
+.submenu-open { display: block; }
+
+.submenu-item {
+  padding: 10px;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.submenu-item:hover { background: rgba(0,0,0,0.05); }
+
+/* Menu footer fixed while scrolling */
+#menu-footer {
+  padding: 15px 20px;
+  background: rgba(255,255,255,0.9);
+}
+
+.social-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.social-row img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 // ===== TOP NEWS DATA (25 News) =====
 const topNews = [
-  {title:"Ronaldo Hat-trick vs Al Hilal", img:"images/news1.jpg", page:"news1.html", author:"M. Dalhatu", date:"2026-01-01"},
+  {title:"Ronaldo Hat-trick vs Al Hilal", img:"images/news1.JPG", page:"news1.html", author:"M. Dalhatu", date:"2026-01-01"},
   {title:"Mbappé joins PSG dream team", img:"images/news2.jpg", page:"news2.html", author:"M. Dalhatu", date:"2026-01-02"},
   {title:"Haaland scores 4 in EPL", img:"images/news3.jpg", page:"news3.html", author:"M. Dalhatu", date:"2026-01-03"},
   {title:"Messi assists twice for Inter Miami", img:"images/news4.jpg", page:"news4.html", author:"M. Dalhatu", date:"2026-01-04"},
